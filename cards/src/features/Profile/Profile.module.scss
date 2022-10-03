@@ -1,0 +1,52 @@
+.profile {
+  .commonTypes {
+    .back {
+      padding-left: 130px;
+    }
+
+    .common {
+      padding-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .personalInform {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 0px solid;
+      width: 380px;
+      height: 340px;
+
+      .title {
+
+      }
+
+      .photo {
+        height: 100px;
+        width: 100px;
+        border-radius: 70px;
+      }
+
+      .name {
+        padding-top: 20px;
+      }
+
+      .email {
+        padding: 5px;
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      .logout {
+
+      }
+    }
+  }
+}
+
+.button {
+  background-color: #7e97d3;
+  width:60px;
+  height:20px;
+}

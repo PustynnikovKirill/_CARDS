@@ -1,0 +1,28 @@
+.registrationBlock {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+
+    .title {
+
+    }
+    .already{
+      margin-top: 10px;
+      margin-bottom: 0px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    .sing {
+      color: -webkit-link;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-bottom: 15px;
+    }
+  }
+}
