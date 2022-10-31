@@ -1,17 +1,19 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+
 
 export const instance = axios.create({
-    /*baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',*/
-    baseURL: 'https://neko-back.herokuapp.com/2.0',
+    baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
+    // baseURL: 'https://neko-back.herokuapp.com/2.0',
     withCredentials: true,
 })
+
 
 export const AuthApi = {
     setNewPass(password: string, token: string) {
         return instance.post("/auth/set-new-password", {password: password, resetPasswordToken: token})
     },
-    registration(data: RegistrationParamsType) {
-        return instance.post("/auth/register", data)
+    registration(email: string, password: string) {
+        return instance.post<RegistrationParamsType,AxiosResponse<RegistrationResponseType>>("/auth/register", {email,password})
     },
     recoveryPassword(email: string) {
         return instance.post(
@@ -31,27 +33,57 @@ export const AuthApi = {
     },
 
     login(email: string, password: string, rememberMe: boolean) {
-        return instance.post('/auth/login', {email, password, rememberMe})
+        return instance.post<LoginType,AxiosResponse<LoginResponseType>>('/auth/login', {email, password, rememberMe})
     },
     logout() {
-        return instance.delete<{ info: string }>('/auth/me', {})
+        return instance.delete<{ info: LogoutType }>('/auth/me', {})
     },
     authMe() {
         return instance.post('/auth/me', {})
     },
     updateUserInfo(data: UpdateUserInfo) {
-        return instance.put('/auth/me', data)
+        return instance.put<UpdateUserInfo,AxiosResponse<ResponseUpdateUserInfoType>>('/auth/me', data)
     }
 }
 
-// type
+type ResponseUpdateUserInfoType = {
+    token: string,
+    tokenDeathTime: number,
+    updatedUser:{
+        avatar: string,
+        created:string,
+        email: string,
+        isAdmin: boolean,
+        name: string
+        publicCardPacksCount: number,
+        rememberMe: boolean,
+        token:string,
+        tokenDeathTime: number,
+        updated: string,
+        verified: boolean,
+        __v: number,
+        _id: string,
+    }
+}
+
+
 export type RegistrationParamsType = {
-    email: string
+    email: string,
     password: string
 }
+export type RegistrationResponseType = {
+    addedUser: any,
+    error?: string
+}
+
 export type UpdateUserInfo = {
     name: string
     avatar: string
+}
+export type LoginType = {
+    email?: string,
+    password?: string,
+    rememberMe?: string
 }
 export type LoginResponseType = {
     _id: string
@@ -65,4 +97,13 @@ export type LoginResponseType = {
     verified: boolean // подтвердил ли почту
     rememberMe: boolean
     error?: string
+}
+
+export type AddedUserType = {
+    addedUser:{},
+    error?: string
+}
+export type LogoutType = {
+    info: string,
+    error: string
 }

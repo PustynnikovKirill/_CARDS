@@ -26,10 +26,12 @@ export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
         setTitle(e.currentTarget.value)
     }
 
-
     return editMode
         ? <div className={s.edi}><TextField id="standard-basic" label="Nickname" variant="standard" value={title} onChange={changeTitle}
                           autoFocus onBlur={activateViewMode}/>
             <Button style={{marginBlockEnd: '0px'}} variant="outlined" onClick={activateViewMode}>SAVE</Button></div>
-        : <div className={s.rename}><span onDoubleClick={activateEditMode}>{props.value}</span><CreateIcon onClick={activateEditMode} style={{fontSize:'small', color:'grey',marginLeft:'2px'}}/></div>
+        : <div className={s.rename}>
+            <span onDoubleClick={activateEditMode}>{props.value}</span>
+            <CreateIcon onClick={activateEditMode} className={s.pens} style={{}}/>
+        </div>
 });

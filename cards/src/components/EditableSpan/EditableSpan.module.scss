@@ -4,5 +4,12 @@
 }
 .rename {
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 12px;
+  .pens {
+    font-size: small;
+    color: gray;
+    margin-left:2px;
+    margin-bottom: 3px;
+  }
 }

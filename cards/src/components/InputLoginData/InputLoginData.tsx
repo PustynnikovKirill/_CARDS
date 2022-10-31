@@ -1,36 +1,35 @@
 import React, {ChangeEvent} from 'react';
 import {
-    Box,
-    Button,
-    Chip,
+    Button, Checkbox,
     FilledInput,
-    FormControl,
+    FormControl, FormControlLabel,
     IconButton,
     InputAdornment,
     InputLabel,
-    OutlinedInput
 } from "@mui/material";
+import {Link} from 'react-router-dom';
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import style from './InputAdornments.module.scss'
+import style from './InputLoginData.module.scss'
 import {useFormik} from "formik";
 import {useAppDispatch} from "../../app/redax/store";
-import {RegistrationTC} from "../../app/redax/auth-reducer";
+import { LoginTC} from "../../app/redax/auth-reducer";
+import {PATH} from "../../features/Header/Pages";
 
 
 type FormikErrorType = {
     email?: string,
     password?: string,
-    confirmPassword?: string
+    rememberMe?: boolean
 }
 
-export const InputAdornments = () => {
+export const InputLoginData = () => {
     const [value, setValues] = React.useState<boolean>(false);
-    const dipatch = useAppDispatch()
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
-            confirmPassword: '',
+            rememberMe: false,
         },
         validate: (values)=> {
             const errors:FormikErrorType = {}
@@ -44,20 +43,13 @@ export const InputAdornments = () => {
             } else if ( values.password.length < 6){
                 errors.password = 'Invalid password'
             }
-            if(!values.confirmPassword){
-                errors.confirmPassword = 'requred'
-            } else if (values.confirmPassword !== values.password){
-                errors.confirmPassword = 'passwords must be equal'
-            }
             return errors
         },
         onSubmit: values => {
-            dipatch(RegistrationTC(values))
+            dispatch(LoginTC(values.email,values.password,values.rememberMe))
             formik.resetForm()
         },
     });
-
-
 
     const handleClickShow = () => {
         setValues(!value)
@@ -99,27 +91,9 @@ export const InputAdornments = () => {
                     />
                 </FormControl>
                 {formik.errors.password && formik.touched.password &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.password}</div></div>}
-                <FormControl className={style.formControl}>
-                    <InputLabel htmlFor="filled-adornment-password">Confirm password</InputLabel>
-                    <FilledInput
-                        id="filled-adornment-password"
-                        type={value ? 'text' : 'password'}
-                        {...formik.getFieldProps('confirmPassword')}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShow}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {value ? <VisibilityOff/> : <Visibility/>}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                </FormControl>
-                {formik.errors.confirmPassword && formik.touched.confirmPassword &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.confirmPassword}</div></div>}
+                <div className={style.checkbox}><div><FormControlLabel control={<Checkbox  {...formik.getFieldProps('rememberMe')} defaultChecked checked={formik.values.rememberMe}/>} label="Remember me" /></div></div>
+                <div className={style.forgot}> <Link style = {{color: 'rgb(54, 110, 255)'}}  to={PATH.REGISTRATION}>Forgot
+                    Password</Link></div>
                 <Button style = {{  borderRadius: '18px',
                     marginTop:"20px",
                     width: "255px",
@@ -130,10 +104,10 @@ export const InputAdornments = () => {
                     fontWeight: "500",
                     color: "#fff"}}
                     type={'submit'} variant={'contained'}>
-                    Sign up
+                    Sign In
                 </Button>
                 <h5 className={style.already}>Already have an account?</h5>
-                <a className={style.sing}>Sing in</a>
+                <a className={style.sing}>Sing Up</a>
             </form>
         </div>
     );

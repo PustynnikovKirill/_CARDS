@@ -1,19 +1,28 @@
 import React from 'react';
 import style from './Registration.module.scss'
 import {Chip, Paper} from "@mui/material";
-import {InputAdornments} from "../../components/InputAdornments/InputAdornments";
+import {InputRegistration} from "../../components/InputRegistration/InputRegistration";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../app/redax/store";
+import { Navigate } from 'react-router-dom';
+
+
 
 
 export const Registration = () => {
+    const isAuthRegister = useSelector<AppRootStateType,boolean>((state)=>state.auth.isAuthRegister)
+
+    if (isAuthRegister) {
+        return <Navigate to = {'/login'}/>
+    }
     return (
         <div className={style.registrationBlock}>
             <Paper elevation={3}>
                 <div className={style.form}>
                     <h1 className={style.title}>Sing Up</h1>
-                    <InputAdornments/>
-                    <Chip label="Sing Up" color="primary" style={{width:'73%', marginTop:'10px'}}/>
-                    <h5 className={style.already}>Already have an account?</h5>
-                    <a className={style.sing}>Sing in</a>
+                    <InputRegistration/>
+                    {/*<Chip label="Sing Up" color="primary" style={{width: '73%', marginTop: '10px'}}/>*/}
+
                 </div>
             </Paper>
         </div>
