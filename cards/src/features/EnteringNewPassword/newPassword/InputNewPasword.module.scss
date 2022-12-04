@@ -1,0 +1,46 @@
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 74%;
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .error {
+      width: 100%;
+      display:flex;
+      justify-content: flex-start;
+      margin-top: -10px;
+      margin-bottom: 5px;
+    }
+    .formControl {
+      width: 100%;
+      padding-bottom: 10px;
+    }
+    .already {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    .button {
+      border-radius: 18px;
+      margin-top:20px;
+      width: 255px;
+      height: 36px;
+      text-transform: none;
+      background: #366EFF;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .sing {
+      color: -webkit-link;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Registration.module.scss'
-import {Chip, Paper} from "@mui/material";
+import {Paper} from "@mui/material";
 import {InputRegistration} from "../../components/InputRegistration/InputRegistration";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/redax/store";
@@ -21,8 +21,6 @@ export const Registration = () => {
                 <div className={style.form}>
                     <h1 className={style.title}>Sing Up</h1>
                     <InputRegistration/>
-                    {/*<Chip label="Sing Up" color="primary" style={{width: '73%', marginTop: '10px'}}/>*/}
-
                 </div>
             </Paper>
         </div>

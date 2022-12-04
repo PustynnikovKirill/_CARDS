@@ -92,22 +92,14 @@ export const InputLoginData = () => {
                 </FormControl>
                 {formik.errors.password && formik.touched.password &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.password}</div></div>}
                 <div className={style.checkbox}><div><FormControlLabel control={<Checkbox  {...formik.getFieldProps('rememberMe')} defaultChecked checked={formik.values.rememberMe}/>} label="Remember me" /></div></div>
-                <div className={style.forgot}> <Link style = {{color: 'rgb(54, 110, 255)'}}  to={PATH.REGISTRATION}>Forgot
+                <div className={style.forgot}> <Link style = {{color: 'rgb(54, 110, 255)'}}  to={PATH.PASSWORD_RECOVERY}>Forgot
                     Password</Link></div>
-                <Button style = {{  borderRadius: '18px',
-                    marginTop:"20px",
-                    width: "255px",
-                    height: "36px",
-                    textTransform: "none",
-                    background: "#366EFF",
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    color: "#fff"}}
+                <Button className={style.button}
                     type={'submit'} variant={'contained'}>
                     Sign In
                 </Button>
                 <h5 className={style.already}>Already have an account?</h5>
-                <a className={style.sing}>Sing Up</a>
+                <a className={style.sing} href={PATH.REGISTRATION}>Sing Up</a>
             </form>
         </div>
     );

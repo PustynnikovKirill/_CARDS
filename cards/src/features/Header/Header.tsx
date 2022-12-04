@@ -2,6 +2,7 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import {PATH} from "./Pages";
 import s from './Header.module.scss'
+import {PacksList} from "../table/PacksList/PacksLists";
 
 export const Header = () => {
     return (
@@ -11,22 +12,28 @@ export const Header = () => {
                     <NavLink className={({isActive}) => isActive ? s.active : ''}
                              to={PATH.PROFILE}>
                         Profile
-                    </NavLink></div>
+                    </NavLink>
+                </div>
                 <div className={s.link}><NavLink className={({isActive}) => isActive ? s.active : ''}
                                                  to={PATH.LOGIN}>
                     Login
-                </NavLink></div>
+                </NavLink>
+                </div>
                 <div className={s.link}><NavLink className={({isActive}) => isActive ? s.active : ''}
                                                  to={PATH.REGISTRATION}>
                     Registration
                 </NavLink></div>
                 <div className={s.link}><NavLink className={({isActive}) => isActive ? s.active : ''}
-                                                 to={PATH.PASSWORD_RECOVERY}>
-                    Password recovery+
+                                                 to={PATH.PACKS_LISTS}>
+                    PacksList
                 </NavLink></div>
                 <div className={s.link}><NavLink className={({isActive}) => isActive ? s.active : ''}
-                                                 to={PATH.ENTERING_A_NEW_PASSWORD}>
-                    Entering a new password
+                                                 to={PATH.MY_PACK_TABLE}>
+                    MyPackTable
+                </NavLink></div>
+                <div className={s.link}><NavLink className={({isActive}) => isActive ? s.active : ''}
+                                                 to={PATH.FRIEND_PACK_TABLE}>
+                    FriendPackTable
                 </NavLink></div>
                 <div className={s.link}>Hover me!</div>
             </div>

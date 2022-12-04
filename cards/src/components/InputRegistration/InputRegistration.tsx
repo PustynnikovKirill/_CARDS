@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import {
     Button,
     FilledInput,
@@ -12,6 +12,7 @@ import style from './InputRegistration.module.scss'
 import {useFormik} from "formik";
 import {useAppDispatch} from "../../app/redax/store";
 import {RegistrationTC} from "../../app/redax/auth-reducer";
+import {PATH} from "../../features/Header/Pages";
 
 
 type FormikErrorType = {
@@ -60,11 +61,10 @@ export const InputRegistration = () => {
         event.preventDefault();
     };
     return (
-
         <div className={style.inputs}>
             <form onSubmit={formik.handleSubmit} className={style.form}>
                 <FormControl className={style.formControl}>
-                    <InputLabel>Email</InputLabel>
+                    {formik.errors.email && formik.touched.email ? <div className={style.error}><InputLabel style={{color:'red'}}>Email</InputLabel></div>:<InputLabel>Email</InputLabel>}
                     <FilledInput
                         id="filled-adornment-password"
                         type='text'
@@ -73,7 +73,7 @@ export const InputRegistration = () => {
                 </FormControl>
                 {formik.errors.email && formik.touched.email && <div className={style.error}><div style={{color:'red'}}>{formik.errors.email}</div></div>}
                 <FormControl className={style.formControl}>
-                    <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+                    {formik.errors.password && formik.touched.password ? <div><InputLabel style={{color:'red'}} htmlFor="filled-adornment-password">Password</InputLabel></div>:<InputLabel htmlFor="filled-adornment-password">Password</InputLabel>}
                     <FilledInput
                         id="filled-adornment-password"
                         type={value ? 'text' : 'password'}
@@ -94,7 +94,7 @@ export const InputRegistration = () => {
                 </FormControl>
                 {formik.errors.password && formik.touched.password &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.password}</div></div>}
                 <FormControl className={style.formControl}>
-                    <InputLabel htmlFor="filled-adornment-password">Confirm password</InputLabel>
+                    {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className={style.error}>  <InputLabel style={{color:'red'}} htmlFor="filled-adornment-password">Confirm password</InputLabel></div>:<InputLabel htmlFor="filled-adornment-password">Confirm password</InputLabel>}
                     <FilledInput
                         id="filled-adornment-password"
                         type={value ? 'text' : 'password'}
@@ -114,20 +114,12 @@ export const InputRegistration = () => {
                     />
                 </FormControl>
                 {formik.errors.confirmPassword && formik.touched.confirmPassword &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.confirmPassword}</div></div>}
-                <Button style = {{  borderRadius: '18px',
-                    marginTop:"20px",
-                    width: "255px",
-                    height: "36px",
-                    textTransform: "none",
-                    background: "#366EFF",
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    color: "#fff"}}
+                <Button className={style.button}
                     type={'submit'} variant={'contained'}>
                     Sign up
                 </Button>
                 <h5 className={style.already}>Already have an account?</h5>
-                <a className={style.sing}>Sing in</a>
+                <a className={style.sing} href={PATH.LOGIN}>Sing in</a>
             </form>
         </div>
     );

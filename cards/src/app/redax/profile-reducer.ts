@@ -1,5 +1,6 @@
 import { Dispatch } from "redux"
 import {AuthApi} from "../../api/auth-api";
+import {setAppErrorAC, setAppInitializedAC} from "./app-reducer";
 
 type InitialStateType = typeof initialState
 
@@ -9,7 +10,7 @@ const initialState = {
     created:'',
     email: '',
     isAdmin: false,
-    name: '',
+    name: 'name',
     publicCardPacksCount: 0,
     rememberMe: false,
     token:'',
@@ -19,12 +20,13 @@ const initialState = {
     __v: 0,
     _id: '',
 }
+
 export type ProfileActionsType = ActionsType
 
 export const profileReducer = (state: InitialStateType = initialState, action: ProfileActionsType): InitialStateType => {
     switch (action.type) {
-        case 'PROFILE':{
-            return {...state, name: action.data.name}
+        case 'PROFILE/PROFILE':{
+            return {...state, ...action.data}
         }
         default:
             return state;
@@ -32,14 +34,22 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
 }
 
 type ActionsType = ReturnType<typeof setProfileAC>
-export const setProfileAC = (data:UpdateType) => ({type:'PROFILE',data} as const)
+export const setProfileAC = (data:UpdateType) => ({type:'PROFILE/PROFILE',data} as const)
 
-export const changeTitleTC = (name: string, avatar: string) => (dispatch:Dispatch<ActionsType>)=>{
+
+export const changeTitleTC = (name: string, avatar: string) => (dispatch:Dispatch)=>{
     AuthApi.updateUserInfo({name, avatar: ''})
         .then((res)=>{
-            dispatch(setProfileAC(res.data.updatedUser))
+            if (res.data.updatedUser.name.length > 0) {
+                dispatch(setProfileAC(res.data.updatedUser))
+            }
+        })
+        .catch(()=>{
+            dispatch(setAppErrorAC('invalid name'))
+            dispatch(setAppInitializedAC(true))
         })
 }
+
 export type UpdateType = {
     avatar: string,
     created:string,

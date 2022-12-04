@@ -1,18 +1,17 @@
-import {AuthApi, LoginResponseType, LogoutType} from "../../api/auth-api";
+import {AuthApi, LoginResponseType, LogoutType, ResponseErrorType} from "../../api/auth-api";
 import {AppDispatch} from "./store";
 import {AxiosError} from "axios";
-import {setAppErrorAC, setAppStatusAC} from "./app-reducer";
+import {setAppErrorTC, setAppInitializedTC, setAppStatusAC, setPasswordRecoveryAC} from "./app-reducer";
+import {setProfileAC} from "./profile-reducer";
 
 type InitialStateType = {
     isLogin: boolean,
-    data:LoginResponseType,
-    isAuthRegister:boolean,
-    isInitialized:boolean
-
+    data: LoginResponseType,
+    isAuthRegister: boolean,
+    isInitialized: boolean
 }
 
-
-const initialState:InitialStateType = {
+const initialState: InitialStateType = {
     isLogin: false,
     data: {
         _id: '',
@@ -20,7 +19,7 @@ const initialState:InitialStateType = {
         name: 'name',
         avatar: '',
         publicCardPacksCount: 0, // количество колод
-        created:new Date(),
+        created: new Date(),
         updated: new Date(),
         isAdmin: false,
         verified: false, // подтвердил ли почту
@@ -28,24 +27,25 @@ const initialState:InitialStateType = {
         error: ''
     },
     isAuthRegister: false,
-    isInitialized:false
+    isInitialized: false
 }
 
-export type AuthActionsType = setLoginType|RegistrationType|LoginType|setIsInitializedType
 
-export const authReducer = (state= initialState,action:AuthActionsType):InitialStateType => {
+export type AuthActionsType = setLoginType | RegistrationType | LoginType | setIsInitializedType
+
+export const authReducer = (state = initialState, action: AuthActionsType): InitialStateType => {
     switch (action.type) {
-        case 'SET_LOGIN':{
-            return {...state, isLogin:action.isLogin}
+        case 'LOGIN/SET_LOGIN': {
+            return {...state, isLogin: action.isLogin}
         }
-        case 'REGISTRATION': {
-            return {...state, isAuthRegister:action.isAuthRegister}
+        case 'REGISTRATION/REGISTRATION': {
+            return {...state, isAuthRegister: action.isAuthRegister}
         }
-        case 'LOGIN': {
-            return {...state, data:action.data}
+        case 'LOGIN/LOGIN': {
+            return {...state, data: action.data}
         }
         case 'INITIALIZED': {
-            return {...state, isInitialized:action.isInitialized}
+            return {...state, isInitialized: action.isInitialized}
         }
         default:
             return state
@@ -53,86 +53,129 @@ export const authReducer = (state= initialState,action:AuthActionsType):InitialS
 }
 
 type setLoginType = ReturnType<typeof setLoginAC>
-export const setLoginAC = (isLogin:boolean) => {
+export const setLoginAC = (isLogin: boolean) => {
     return {
-        type:'SET_LOGIN',
+        type: 'LOGIN/SET_LOGIN',
         isLogin
-    }as const
+    } as const
 }
 
 type RegistrationType = ReturnType<typeof RegistrationAC>
-export const RegistrationAC = (isAuthRegister:boolean) => {
+export const RegistrationAC = (isAuthRegister: boolean) => {
     return {
-        type:'REGISTRATION',
+        type: 'REGISTRATION/REGISTRATION',
         isAuthRegister
-     } as const
+    } as const
 }
-type LoginType = ReturnType<typeof LoginAC>
-export const LoginAC = (data:LoginResponseType) => {
+export type LoginType = ReturnType<typeof LoginAC>
+export const LoginAC = (data: LoginResponseType) => {
     return {
-        type:'LOGIN',
+        type: 'LOGIN/LOGIN',
         data
     } as const
 }
 
 type setIsInitializedType = ReturnType<typeof setisInitializedAC>
-export const setisInitializedAC = (isInitialized:boolean) => {
+export const setisInitializedAC = (isInitialized: boolean) => {
     return {
-        type:'INITIALIZED',
+        type: 'INITIALIZED',
         isInitialized
     } as const
 }
 
 
-export const RegistrationTC = (email:string, password:string) =>(dispatch:AppDispatch)=>{
-    return AuthApi.registration(email,password)
-        .then(res=>{
-           dispatch(RegistrationAC(true))
+export const RegistrationTC = (email: string, password: string) => (dispatch: AppDispatch) => {
+    dispatch(setAppStatusAC('loading'))
+    return AuthApi.registration(email, password)
+        .then(res => {
+            dispatch(RegistrationAC(true))
+            dispatch(setAppStatusAC('succeeded'))
         })
-        .catch((err:AxiosError)=>{
-
+        .catch((e: AxiosError) => {
+            const error = e.response
+                ? (e.response.data as (ResponseErrorType)).error
+                : e.message
+            dispatch(setAppErrorTC(error))
+            dispatch(setAppInitializedTC(true))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
         })
 }
 
-export const LoginTC = (email: string,password:string,rememberMe:boolean) =>(dispatch:AppDispatch)=>{
+export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: AppDispatch) => {
     dispatch(setAppStatusAC('loading'))
-     AuthApi.login(email,password,rememberMe)
-        .then(res=>{
+    AuthApi.login(email, password, rememberMe)
+        .then(res => {
             dispatch(LoginAC(res.data))
             dispatch(setLoginAC(true))
             dispatch(setAppStatusAC('succeeded'))
         })
-        .catch((err:AxiosError)=>{
-
+        .catch((err: AxiosError) => {
+            const error = err.response
+                ? (err.response.data as (ResponseErrorType)).error
+                : err.message
+                dispatch(setAppErrorTC(error))
+            dispatch(setAppInitializedTC(true))
         })
-        .finally(()=>{
+        .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
 
-export const isLoginTC = () =>(dispatch:AppDispatch)=>{
+export const isLoginTC = () => (dispatch: AppDispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.authMe()
-        .then(res=>{
+        .then(res => {
+            dispatch(LoginAC(res.data))
+            dispatch(setProfileAC(res.data))
             dispatch(setLoginAC(true))
+            dispatch(setAppStatusAC('succeeded'))
+        })
+        .catch((err: AxiosError) => {
+            const error = err.response
+                ? (err.response.data as (ResponseErrorType)).error
+                : err.message
+            dispatch(setAppErrorTC(error))
+        })
+        .finally(() => {
             dispatch(setisInitializedAC(true))
             dispatch(setAppStatusAC('succeeded'))
         })
-        .catch((err:AxiosError)=>{
-            dispatch(setAppErrorAC('error'))
-        })
-        .finally(()=>{
-            dispatch(setAppStatusAC('succeeded'))
-        })
 }
-export const logoutTC = () =>(dispatch:AppDispatch)=>{
+export const logoutTC = () => (dispatch: AppDispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.logout()
-        .then(res=>{
+        .then(res => {
             dispatch(setLoginAC(false))
             dispatch(setAppStatusAC('succeeded'))
         })
-        .catch((err:AxiosError)=>{
+        .catch((err: AxiosError) => {
+            dispatch(setAppStatusAC('succeeded'))
+            dispatch(setAppErrorTC('failed to logout'))
+            dispatch(setAppInitializedTC(true))
+        })
+        .finally(() => {
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
+
+export const recoveryPasswordTC = (email:string) => (dispatch: AppDispatch) => {
+    dispatch(setAppStatusAC('loading'))
+    AuthApi.recoveryPassword(email)
+        .then(res => {
+            dispatch(setPasswordRecoveryAC(true))
+            dispatch(setAppStatusAC('succeeded'))
+        })
+        .catch((err: AxiosError) => {
+            const error = err.response
+                ? (err.response.data as (ResponseErrorType)).error
+                : err.message
+            dispatch(setAppErrorTC(error))
+            dispatch(setAppStatusAC('succeeded'))
+            dispatch(setAppInitializedTC(true))
+        })
+        .finally(() => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }

@@ -2,21 +2,25 @@ import axios, {AxiosResponse} from "axios";
 
 
 export const instance = axios.create({
-    baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
-    // baseURL: 'https://neko-back.herokuapp.com/2.0',
+   baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
+     // baseURL: 'https://neko-back.herokuapp.com/2.0',
     withCredentials: true,
 })
+// export const instance2 = axios.create({
+//     baseURL: 'https://neko-back.herokuapp.com/2.0',
+//     withCredentials: true,
+// })
 
 
 export const AuthApi = {
-    setNewPass(password: string, token: string) {
-        return instance.post("/auth/set-new-password", {password: password, resetPasswordToken: token})
+    setNewPass(password:string, resetPasswordToken: string | undefined) {
+        return instance.post("/auth/set-new-password", {password,resetPasswordToken})
     },
     registration(email: string, password: string) {
         return instance.post<RegistrationParamsType,AxiosResponse<RegistrationResponseType>>("/auth/register", {email,password})
     },
-    recoveryPassword(email: string) {
-        return instance.post(
+    recoveryPassword(email:string) {
+        return instance.post (
             "/auth/forgot",
             {
                 email, // кому восстанавливать пароль
@@ -24,7 +28,7 @@ export const AuthApi = {
                 // можно указать разработчика фронта)
                 message: `<div style="background-color: #f7f7f7; padding: 15px">
                     Follow 
-                    <a href='http://localhost:3000/#/set-new-password/$token$'>
+                    <a href='http://localhost:3000/set-new-password/$token$'>
                     this link</a> to recover your password
                     </div>` // хтмп-письмо, вместо $token$ бэк вставит токен
 
@@ -36,10 +40,10 @@ export const AuthApi = {
         return instance.post<LoginType,AxiosResponse<LoginResponseType>>('/auth/login', {email, password, rememberMe})
     },
     logout() {
-        return instance.delete<{ info: LogoutType }>('/auth/me', {})
+        return instance.delete<{ info: LogoutType }>('/auth/me')
     },
     authMe() {
-        return instance.post('/auth/me', {})
+        return instance.post('/auth/me')
     },
     updateUserInfo(data: UpdateUserInfo) {
         return instance.put<UpdateUserInfo,AxiosResponse<ResponseUpdateUserInfoType>>('/auth/me', data)
@@ -106,4 +110,9 @@ export type AddedUserType = {
 export type LogoutType = {
     info: string,
     error: string
+}
+export type ResponseErrorType = {
+    email:string,
+    error: string
+    in: string
 }

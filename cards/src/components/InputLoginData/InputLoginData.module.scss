@@ -28,7 +28,17 @@
       display: flex;
       justify-content: flex-end;
     }
-
+    .button {
+      border-radius: 18px;
+      margin-top:20px;
+      width: 255px;
+      height: 36px;
+      text-transform: none;
+      background: #366EFF;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+    }
     .already {
       margin-top: 10px;
       margin-bottom: 0px;
