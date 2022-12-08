@@ -19,7 +19,7 @@ const initialState = {
     cardPacksTotalCount: 0, // количество колод
     maxCardsCount: 0,
     minCardsCount: 0,
-    page: 0, // выбранная страница
+    page: 1, // выбранная страница
     pageCount: 4, //количество элементов на странице
 }
 

@@ -24,8 +24,8 @@ export const CardsApi = {
             }
         })
     }
-
 }
+
 export type ResponseSetNewCards = {
     cards: [
         {
@@ -51,7 +51,7 @@ export type ResponseSetNewCards = {
 export type getCardsParamsType = {
     cardAnswer?: string, // не обязательно
     cardQuestion?: string, // не обязательно
-    cardsPack_id: string | undefined,
+    cardsPack_id: string,
     min?: number, // не обязательно
     max?: number, // не обязательно
     sortCards?: number, // не обязательно

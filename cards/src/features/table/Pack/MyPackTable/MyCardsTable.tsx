@@ -15,7 +15,7 @@ import {getCardsTC, pageCardsAC, pageCountChangeAC} from "../../../../app/redax/
 
 interface Column {
     // id: 'name' | 'code' | 'population' | 'size' | 'density';
-    id: 'guestion' | 'answer' | 'lastUpdated' | 'crade' | 'actions';
+    id: 'question' | 'answer' | 'lastUpdated' | 'crade' | 'actions';
     label: string;
     minWidth?: number;
     align?: 'right';
@@ -23,7 +23,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-    {id: 'guestion', label: 'Question', minWidth: 170},
+    {id: 'question', label: 'Question', minWidth: 170},
     {id: 'answer', label: 'Answer', minWidth: 100},
     {
         id: 'lastUpdated',
@@ -48,53 +48,55 @@ const columns: readonly Column[] = [
     },
 ];
 
-interface Data {
-    guestion: string;
-    answer: string;
-    lastUpdated: number;
-    crade: any;
-    actions: any;
-}
+// interface Data {
+//     question: string;
+//     answer: string;
+//     lastUpdated: number;
+//     crade: any;
+//     actions: any;
+// }
 
-function createData(
-    guestion: string,
-    answer: string,
-    lastUpdated: number,
-    crade: string,
-    actions: any,
-): Data {
-    return {guestion, answer, lastUpdated, crade, actions};
-}
+// function createData(
+//     question: string,
+//     answer: string,
+//     lastUpdated: number,
+//     crade: string,
+//     actions: any,
+// ): Data {
+//     return {question, answer, lastUpdated, crade, actions};
+// }
 
 
 export const MyCardsTable = () => {
-    const dispatch = useAppDispatch()
 
+    const dispatch = useAppDispatch()
     const cards = useSelector<AppRootStateType, CardType[]>(state => state.cards.cards)
-    const newPage = useSelector<AppRootStateType, CardType[]>(state => state.cards.cards)
     const page = useSelector<AppRootStateType, number | undefined>(state => state.cards.page)
     const pageCount = useSelector<AppRootStateType, number | undefined>(state => state.cards.pageCount)
     const packUserId = useSelector<AppRootStateType, string>(state => state.cards.packUserId)
+    const cardsTotalCount = useSelector<AppRootStateType, number>(state => state.cards.cardsTotalCount)
+    const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
 
+
+    const pagesCount = Math.ceil(cardsTotalCount / (pageCount ? pageCount:0))
+    console.log(pagesCount)
+    console.log(pageCount)
+    console.log(cardsTotalCount)
 
     // const [page, setPage] = React.useState(0);
     // const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
-    // const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, page: number|undefined) => {
-    //     dispatch(pageCardsAC(page))
-    //     dispatch(getCardsTC({page,pageCount}))
+    const handleChangePage = (event: unknown, newPage: number) => {
+        newPage = newPage + 1
+        dispatch(pageCardsAC(newPage))
+        dispatch(getCardsTC({cardsPack_id, page:newPage,pageCount}))
+        // setPage(newPage);
+    };
 
-    // dispatch(createCurrentPageAC(newPage))
-    //
-    // dispatch(getPacksTC(newPage,+event.target.value))
-    // setPage(newPage);
-// };
-
-// const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     dispatch(pageCountChangeAC(+event.target.value))
-//     dispatch(getCardsTC({pageCount}))
-// };
-
+    const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // dispatch(pageCountChangeAC(+event.target.value))
+        dispatch(getCardsTC({cardsPack_id,pageCount:+event.target.value}))
+    };
 
     const changeFormat = (format: string) => {
         return (new Date(format).toLocaleString())
@@ -162,15 +164,15 @@ export const MyCardsTable = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            {/*<TablePagination*/}
-            {/*    rowsPerPageOptions={[2, 4]}*/}
-            {/*    component="div"*/}
-            {/*    count={cards.length}*/}
-            {/*    rowsPerPage={pageCount}*/}
-            {/*    page={page}*/}
-            {/*    onPageChange={handleChangePage}*/}
-            {/*    onRowsPerPageChange={handleChangeRowsPerPage}*/}
-            {/*/>*/}
+            <TablePagination
+                rowsPerPageOptions={[2, 4]}
+                component="div"
+                count={pagesCount ? pagesCount:0}
+                rowsPerPage={pageCount ? pageCount:0}
+                page={page ? page-1:0}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+            />
         </Paper>
     );
 }

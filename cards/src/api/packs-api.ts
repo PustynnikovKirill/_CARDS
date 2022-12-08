@@ -5,8 +5,8 @@ import {PackType} from "../features/table/PacksList/StickyHeadTable/PackTable";
 
 export const PacksApi = {
     getPacks(currentPage:number|undefined,pageCount:number|undefined) {
-        return instance.get<SetNewPacks, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack?page=${currentPage}&pageCount=${pageCount}`, {
-            params: {
+        return instance.get<GetNewPacksType, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack?page=${currentPage}&pageCount=${pageCount}`, {
+            // params: {
                 // packName: 'New Pack', // не обязательно
                 // min: 0, // не обязательно
                 // max: 0, // не обязательно
@@ -18,7 +18,7 @@ export const PacksApi = {
 // если вас кто-то забанил. То с помощью
 // данного параметра можно увидеть свои колоды
 // и поправить их или удалить или обжаловать 🙃
-            }
+//             }
         })
     },
     newCardsPack(cardsPack: CardsPackType) {
@@ -41,7 +41,7 @@ export const PacksApi = {
 }
 
 
-export type SetNewPacks = {
+export type GetNewPacksType = {
     packName?: string, // не обязательно
     min?: number, // не обязательно
     max?: number, // не обязательно
@@ -75,7 +75,7 @@ export type ResponseSetNewPacks = {
 type RecoveryPacksType = {
     name?: string,// если не отправить будет таким
     deckCover?: string, // не обязателен
-    private?: false // если не отправить будет такой
+    private?: false, // если не отправить будет такой
 }
 
 type UpdatedCardsPackType = {
@@ -85,6 +85,6 @@ type UpdatedCardsPackType = {
 
 export type CardsPackType = {
     name: string,
-    deckCover?: string
-    private?: boolean
+    deckCover?: string,
+    private?: boolean,
 }

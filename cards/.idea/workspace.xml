@@ -1,66 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bda2e6ff-2068-4202-872f-0455a34e8797" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/cards-api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/packs-api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ErrorSnackbar/ErrorSnackbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ForgotPassword/ForgotPasswordInput/ForgotPasswordInput.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ForgotPassword/ForgotPasswordInput/ForgotPasswordInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/newPassword/InputNewPassword.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/newPassword/InputNewPasword.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/CheckEmail/BackToLogin/BackToLogin.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/CheckEmail/BackToLogin/BackToLogin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/CheckEmail/CheckEmail.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/CheckEmail/CheckiEmail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/serchInputMyPack/Rating.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/serchInputMyPack/searchInputMyPack.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/Pack/serchInputMyPack/searchInputMyPack.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.module..scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/serchInput.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/Rating.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+    <list default="true" id="3617ba24-45ab-4900-a5b0-6daa1c595c52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/auth-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/app-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditableSpan/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputRegistration/InputRegistration.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputRegistration/InputRegistration.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputRegistration/InputRegistration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputRegistration/InputRegistration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/EnteringANewPassword/EnteringANewPassword.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/EnteringANewPassword/EnteringANewPassword.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Header/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Registration/Registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/cards-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/cards-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/packs-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packs-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,18 +18,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2I5YMsyp89xUn3pBhvSFOLvk27o" />
+  <component name="ProjectId" id="2IaMD7nWsOuyryMV8hiZhDJEETP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -91,42 +31,25 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/redax" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="E:\NEWCARDS\_CARDS\cards\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\NEWCARDS\_CARDS\cards\src\app\redax" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bda2e6ff-2068-4202-872f-0455a34e8797" name="Changes" comment="" />
-      <created>1669472866382</created>
+      <changelist id="3617ba24-45ab-4900-a5b0-6daa1c595c52" name="Changes" comment="" />
+      <created>1670415118954</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1669472866382</updated>
-      <workItem from="1669472867927" duration="140822000" />
+      <updated>1670415118954</updated>
+      <workItem from="1670415120773" duration="21001000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
