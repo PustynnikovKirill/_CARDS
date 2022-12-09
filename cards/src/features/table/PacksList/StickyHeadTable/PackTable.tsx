@@ -66,35 +66,17 @@ export const PackTable: React.FC = (props) => {
     const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.packs.cardPacksTotalCount)
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
 
-    let pagesCount = Math.ceil(cardPacksTotalCount / pageCount)
-    // let pages = []
-    // for (let i = 1; i <= pageCount; i++) {
-    //     pages.push(i)
-    // }
-    // const [page, setPage] = React.useState(0);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(0);
+
     const handleChangePage = (event: unknown, newPage: number) => {
         newPage = newPage + 1
-        // dispatch(createCurrentPageAC(newPage))
+        dispatch(createCurrentPageAC(newPage))
         dispatch(getPacksTC(newPage, pageCount))
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // dispatch(rowsPageAC(+event.target.value))
+        dispatch(rowsPageAC(+event.target.value))
         dispatch(getPacksTC(page, +event.target.value))
-        // setPage(0);
-        // setRowsPerPage(+event.target.value);
     };
-
-    // const handleChangePage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null, page: number) => {
-    //     // dispatch(createCurrentPageAC(page))
-    //     dispatch(getPacksTC(page+1, pageCount))
-    // }
-    //
-    // const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     dispatch(rowsPageAC(+event.target.value))
-    //     dispatch(getPacksTC(page, +event.target.value))
-    // };
 
 
     const createData = (data: any) => {
@@ -164,7 +146,7 @@ export const PackTable: React.FC = (props) => {
             <TablePagination
                 rowsPerPageOptions={[2, 4]}
                 component="div"
-                count={pagesCount}
+                count={cardPacksTotalCount}
                 rowsPerPage={pageCount}
                 page={page-1}
                 onPageChange={handleChangePage}
@@ -173,6 +155,7 @@ export const PackTable: React.FC = (props) => {
         </Paper>
     );
 }
+
 export type  CardPacksType = PackType[]
 
 export type PackType = {

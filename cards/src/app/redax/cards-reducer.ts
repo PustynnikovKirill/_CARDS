@@ -65,7 +65,7 @@ export const currentCardsPackACType = (currentCardsPack_id: string) => ({
 } as const)
 
 
-export const getCardsTC = (data: getCardsParamsType) => (dispatch: AppDispatch) => {
+export const getCardsTC = (data: getCardsParamsType) => (dispatch: AppDispatch,) => {
     CardsApi.getCards(data)
         .then((res) => {
             dispatch(setCardsAC(res.data))

@@ -78,13 +78,6 @@ export const MyCardsTable = () => {
     const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
 
 
-    const pagesCount = Math.ceil(cardsTotalCount / (pageCount ? pageCount:0))
-    console.log(pagesCount)
-    console.log(pageCount)
-    console.log(cardsTotalCount)
-
-    // const [page, setPage] = React.useState(0);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
     const handleChangePage = (event: unknown, newPage: number) => {
         newPage = newPage + 1
@@ -94,7 +87,7 @@ export const MyCardsTable = () => {
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // dispatch(pageCountChangeAC(+event.target.value))
+        dispatch(pageCountChangeAC(+event.target.value))
         dispatch(getCardsTC({cardsPack_id,pageCount:+event.target.value}))
     };
 
@@ -167,8 +160,8 @@ export const MyCardsTable = () => {
             <TablePagination
                 rowsPerPageOptions={[2, 4]}
                 component="div"
-                count={pagesCount ? pagesCount:0}
-                rowsPerPage={pageCount ? pageCount:0}
+                count={cardsTotalCount}
+                rowsPerPage={pageCount ? pageCount : 0}
                 page={page ? page-1:0}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
