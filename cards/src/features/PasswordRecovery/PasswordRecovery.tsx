@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './PasswordRecovery.module.scss'
 import {Paper} from "@mui/material";
-
 import {ForgotPasswordInput} from "../../components/ForgotPassword/ForgotPasswordInput/ForgotPasswordInput";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/redax/store";

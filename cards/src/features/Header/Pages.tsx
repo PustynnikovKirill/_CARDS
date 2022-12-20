@@ -9,7 +9,6 @@ import React from "react";
 import {CheckEmail} from "../PasswordRecovery/CheckEmail/CheckiEmail";
 import {EnteringNewPassword} from "../EnteringNewPassword/EnteringNewPassword";
 import {PacksList} from "../table/PacksList/PacksLists";
-import {FriendPacksTable} from "../table/friendPack/friendPacksTable";
 import {MyPacks} from "../table/Pack/MyPack";
 
 
@@ -27,7 +26,6 @@ export const PATH = {
     CHECK_EMAIL:'/checkEmail',
     PACKS_LISTS:'/packsLists',
     MY_PACK_TABLE:'/myPackTable',
-    FRIEND_PACK_TABLE:'/friendPackTable'
 }
 
 export const Pages=()=> {
@@ -51,7 +49,6 @@ export const Pages=()=> {
                 <Route path={PATH.ENTERING_A_NEW_PASSWORD} element={<EnteringNewPassword/>}/>
                 <Route path={PATH.PACKS_LISTS} element={<PacksList/>}/>
                 <Route path={PATH.MY_PACK_TABLE} element={<MyPacks/>}/>
-                <Route path={PATH.FRIEND_PACK_TABLE} element={<FriendPacksTable/>}/>
             </Routes>
         </div>
     )

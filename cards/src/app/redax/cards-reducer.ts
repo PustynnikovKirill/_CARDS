@@ -22,10 +22,11 @@ const initialState = {
     page: 1,
     pageCount: 4,
     packUserId: '',
-    currentCardsPack_id: ''
+    currentCardsPack_id: '',
+    flagCard:false
 }
 
-export type CardsActionsType = setCardsACType | pageCardsACType | pageCountChangeACType | currentCardsPackACTypeType
+export type CardsActionsType = setCardsACType | pageCardsACType | pageCountChangeACType | currentCardsPackACTypeType | cardChangeMyOrFriendType
 
 export const cardsReducer = (state: InitialStateType = initialState, action: CardsActionsType): InitialStateType => {
     switch (action.type) {
@@ -40,6 +41,9 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Car
         }
         case 'CARDS/CURRENT_CARDS_PACK_ID': {
             return {...state, currentCardsPack_id: action.currentCardsPack_id}
+        }
+        case 'CARDS/CHANGE_MY_OR_FRIEND': {
+            return {...state, flagCard:action.flagCard}
         }
         default:
             return state;
@@ -63,6 +67,13 @@ export const currentCardsPackACType = (currentCardsPack_id: string) => ({
     type: 'CARDS/CURRENT_CARDS_PACK_ID',
     currentCardsPack_id
 } as const)
+
+type cardChangeMyOrFriendType = ReturnType<typeof cardChangeMyOrFriend>
+export const cardChangeMyOrFriend = (flagCard:boolean) => ({
+    type: 'CARDS/CHANGE_MY_OR_FRIEND',
+    flagCard
+} as const)
+
 
 
 export const getCardsTC = (data: getCardsParamsType) => (dispatch: AppDispatch,) => {
@@ -108,5 +119,6 @@ type InitialStateType = {
     page: number | undefined,
     pageCount: number | undefined,
     packUserId: string,
-    currentCardsPack_id: string
+    currentCardsPack_id: string,
+    flagCard:boolean
 }

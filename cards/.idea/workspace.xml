@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46cb759c-7dcf-4457-b478-e4d1ac055581" name="Changes" comment="">
+    <list default="true" id="7d5fa677-4d63-464e-b675-15b9e13c06f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Header/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/Rating.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2IdrCQjZMN0x0NhdMLpi6JJRSlw" />
+  <component name="ProjectId" id="2J7hsPJGAChHIR4ABpDpJcA0K0Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,12 +56,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46cb759c-7dcf-4457-b478-e4d1ac055581" name="Changes" comment="" />
-      <created>1670522174766</created>
+      <changelist id="7d5fa677-4d63-464e-b675-15b9e13c06f6" name="Changes" comment="" />
+      <created>1671435236151</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1670522174766</updated>
-      <workItem from="1670522176206" duration="10279000" />
+      <updated>1671435236151</updated>
+      <workItem from="1671435238011" duration="28410000" />
     </task>
     <servers />
   </component>

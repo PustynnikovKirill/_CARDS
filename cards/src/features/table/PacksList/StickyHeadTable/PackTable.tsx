@@ -19,7 +19,7 @@ import {
     rowsPageAC,
     updatePackTC
 } from "../../../../app/redax/packs-reducer";
-import {getCardsTC} from "../../../../app/redax/cards-reducer";
+import {cardChangeMyOrFriend, getCardsTC} from "../../../../app/redax/cards-reducer";
 import {useNavigate} from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 
@@ -65,6 +65,7 @@ export const PackTable: React.FC = (props) => {
     const pageCount = useSelector<AppRootStateType, number>(state => state.packs.pageCount)
     const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.packs.cardPacksTotalCount)
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
+    const userId = useSelector<AppRootStateType>((state) => state.auth.data._id)
 
 
     const handleChangePage = (event: unknown, newPage: number) => {
@@ -87,7 +88,13 @@ export const PackTable: React.FC = (props) => {
         dispatch(deletePackTC(_id))
     }
 
-    const onClickToCardsHandler = (idPack: string) => {
+    const onClickToCardsHandler = (idPack: string, user_id: string | undefined) => {
+
+        if (user_id === userId) {
+            dispatch(cardChangeMyOrFriend(true))
+        } else {
+            dispatch(cardChangeMyOrFriend(false))
+        }
         dispatch(getCardsTC({cardsPack_id: idPack}))
         navigate('/myPackTable')
     }
@@ -121,7 +128,7 @@ export const PackTable: React.FC = (props) => {
                                 dispatch(updatePackTC({_id: card._id, name: 'UpdatePack'}))
                             }
                             return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
-                                <TableCell onClick={() => onClickToCardsHandler(card._id)}>
+                                <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
                                     {card.name}
                                 </TableCell>
                                 <TableCell>
@@ -129,7 +136,6 @@ export const PackTable: React.FC = (props) => {
                                 </TableCell>
                                 <TableCell>
                                     {createData(card.updated)}
-
                                 </TableCell>
                                 <TableCell>
                                     {card.user_id}
@@ -148,7 +154,7 @@ export const PackTable: React.FC = (props) => {
                 component="div"
                 count={cardPacksTotalCount}
                 rowsPerPage={pageCount}
-                page={page-1}
+                page={page - 1}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />

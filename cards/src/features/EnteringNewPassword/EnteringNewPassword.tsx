@@ -7,8 +7,6 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../app/redax/store";
 
 
-
-
 export const EnteringNewPassword = () => {
     const isAuthRegister = useSelector<AppRootStateType,boolean>((state)=>state.auth.isAuthRegister)
     const isNewPassword = useSelector<AppRootStateType,boolean>((state)=>state.app.isNewPassword)
