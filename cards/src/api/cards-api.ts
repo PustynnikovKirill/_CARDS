@@ -4,25 +4,18 @@ import {AxiosResponse} from "axios";
 
 export const CardsApi = {
     getCards(data: getCardsParamsType) {
-        return instance.get<getCardsParamsType,AxiosResponse<ResponseSetNewCards>>(`/cards/card`, {
+        return instance.get<getCardsParamsType, AxiosResponse<ResponseSetNewCards>>(`/cards/card`, {
             params: data
         })
     },
-    newCard(card:CreateCardsType) {
+    newCard(card: CreateCardsType) {
         return instance.post('/cards/card', {card})
     },
-    deleteCard(_id:string) {
-        instance.delete(`cards/card?id=${_id}`)
+    deleteCard(_id: string,cardsPack_id:string) {
+        return instance.delete(`cards/card?id=${_id}&cardsPack_id=${cardsPack_id}`)
     },
-    updatedCard() {
-        instance.put('/cards/card', {
-            params: {
-                card: {
-                    _id: "5eb6a2f72f849402d46c6ac7",
-                    question: "new question",
-                }
-            }
-        })
+    updatedCard(card: ChangeCardsType) {
+        return instance.put('/cards/card', {card})
     }
 }
 
@@ -69,4 +62,10 @@ export type CreateCardsType = {
     questionImg?: string,// не обязателен
     questionVideo?: string, // не обязателен
     answerVideo?: string, // не обязателен
+}
+
+export type ChangeCardsType = {
+    _id: string,
+    question?: string, // не обязательно
+    cardsPack_id: string
 }

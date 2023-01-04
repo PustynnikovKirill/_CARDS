@@ -10,7 +10,15 @@ import TableRow from '@mui/material/TableRow';
 import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch} from "../../../../app/redax/store";
 import HalfRating from "../serchInputMyPack/Rating";
-import {getCardsTC, pageCardsAC, pageCountChangeAC} from "../../../../app/redax/cards-reducer";
+import {
+    changeCardTC,
+    deleteCardTC,
+    getCardsTC,
+    pageCardsAC,
+    pageCountChangeAC
+} from "../../../../app/redax/cards-reducer";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 interface Column {
@@ -41,7 +49,7 @@ const columns: readonly Column[] = [
     },
     {
         id: 'actions',
-        label: '',
+        label: 'Action',
         minWidth: 170,
         align: 'right',
         format: (value: number) => value.toFixed(2),
@@ -78,23 +86,30 @@ export const MyCardsTable = () => {
     const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
 
 
-
     const handleChangePage = (event: unknown, newPage: number) => {
         newPage = newPage + 1
         dispatch(pageCardsAC(newPage))
-        dispatch(getCardsTC({cardsPack_id, page:newPage,pageCount}))
+        dispatch(getCardsTC({cardsPack_id, page: newPage, pageCount}))
         // setPage(newPage);
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(pageCountChangeAC(+event.target.value))
-        dispatch(getCardsTC({cardsPack_id,pageCount:+event.target.value}))
+        dispatch(getCardsTC({cardsPack_id, pageCount: +event.target.value}))
     };
 
     const changeFormat = (format: string) => {
         return (new Date(format).toLocaleString())
     }
-//
+
+    const updateChangeHandler = (_id:string, cardsPack_id:string) => {
+        dispatch(changeCardTC({_id,cardsPack_id,question:"newName"}))
+    }
+
+    const deleteCardHandler = (_id:string,cardsPack_id:string) => {
+        dispatch(deleteCardTC(_id,cardsPack_id))
+    }
+
 // useEffect(() => {
 //     dispatch(getCardsTC())
 // }, [])
@@ -122,38 +137,24 @@ export const MyCardsTable = () => {
                             .map((cards) => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={cards._id}>
-                                        <TableCell>
+                                        <TableCell onClick={()=>updateChangeHandler(cards._id,cards.cardsPack_id)}>
                                             {cards.question}
                                         </TableCell>
                                         <TableCell>
                                             {cards.answer}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell align={'right'}>
                                             {changeFormat(cards.updated)}
                                         </TableCell>
-                                        <TableCell>
+                                        <TableCell align={'right'}>
                                             <HalfRating/>
                                         </TableCell>
-
+                                        <TableCell align={'right'}>
+                                            <BorderColorIcon/><DeleteIcon onClick={()=>deleteCardHandler(cards._id,cards.cardsPack_id)}/>
+                                        </TableCell>
                                     </TableRow>
                                 );
                             })}
-                        {/*<TableRow hover role="checkbox" tabIndex={-1} key={row.guestion}>*/}
-                        {/*    {columns.map((column) => {*/}
-                        {/*        const value = row[column.id];*/}
-                        {/*        return (*/}
-                        {/*            <TableCell key={column.id} align={column.align}>*/}
-                        {/*                {column.format && typeof value === 'number'*/}
-                        {/*                    ? column.format(value)*/}
-                        {/*                    : value}*/}
-                        {/*                {column.id ==='actions' && <div>*/}
-                        {/*                    <SchoolIcon/><BorderColorIcon/><DeleteIcon/>*/}
-                        {/*                </div>}*/}
-                        {/*                {column.id === 'crade' && <div style={{width:'100%'}}><HalfRating/></div>}*/}
-                        {/*            </TableCell>*/}
-                        {/*        );*/}
-                        {/*    })}*/}
-                        {/*</TableRow>*/}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -162,7 +163,7 @@ export const MyCardsTable = () => {
                 component="div"
                 count={cardsTotalCount}
                 rowsPerPage={pageCount ? pageCount : 0}
-                page={page ? page-1:0}
+                page={page ? page - 1 : 0}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />

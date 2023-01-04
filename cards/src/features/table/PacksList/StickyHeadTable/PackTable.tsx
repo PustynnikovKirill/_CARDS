@@ -131,16 +131,16 @@ export const PackTable: React.FC = (props) => {
                                 <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
                                     {card.name}
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align={'left'}>
                                     {card.cardsCount}
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align={'right'}>
                                     {createData(card.updated)}
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align={'center'}>
                                     {card.user_id}
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align={'right'}>
                                     <SchoolIcon/><BorderColorIcon onClick={updatePackHandler}/><DeleteIcon
                                     onClick={() => deletePackHandler(card._id)}/>
                                 </TableCell>

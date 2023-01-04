@@ -16,7 +16,7 @@ export const MyPacks = () => {
     const navigate = useNavigate()
 
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
-    const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.cards[0]?.cardsPack_id)
+    const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
     const flagCard = useSelector<AppRootStateType, boolean>(state => state.cards.flagCard)
 
     const addNewCardHandler = () => {

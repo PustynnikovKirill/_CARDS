@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d5fa677-4d63-464e-b675-15b9e13c06f6" name="Changes" comment="">
+    <list default="true" id="e568836a-7a5a-48af-97b1-e6df0673e46f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/cards-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/cards-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/EnteringNewPassword/EnteringNewPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Header/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/PasswordRecovery/PasswordRecovery.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPackTable/FriendPack.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/friendPacksTable.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/Rating.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/friendPack/serchInputFriendPack/searchInputFriendPack.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,18 +18,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2J7hsPJGAChHIR4ABpDpJcA0K0Z" />
+  <component name="ProjectId" id="2JoY4cVktVAB9mvjnuXD0BsGgG9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,27 +40,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7d5fa677-4d63-464e-b675-15b9e13c06f6" name="Changes" comment="" />
-      <created>1671435236151</created>
+      <changelist id="e568836a-7a5a-48af-97b1-e6df0673e46f" name="Changes" comment="" />
+      <created>1672745714729</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1671435236151</updated>
-      <workItem from="1671435238011" duration="28410000" />
+      <updated>1672745714729</updated>
+      <workItem from="1672745716072" duration="12974000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
