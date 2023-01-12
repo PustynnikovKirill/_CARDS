@@ -1,9 +1,26 @@
 import {CardsPackType, PacksApi, ResponseSetNewPacks} from "../../api/packs-api";
 import {AppDispatch} from "./store";
 import {PackType} from "../../features/table/PacksList/StickyHeadTable/PackTable";
+import {ChangeEvent} from "react";
 
+type CardPacksType = {
+    _id: string,
+    user_id: string,
+    name: string,
+    cardsCount: number,
+    created: string,
+    updated: string,
+}
 
-type InitialStateType = typeof initialState
+type InitialStateType = {
+    cardPacks: CardPacksType[],
+    cardPacksTotalCount: number, // количество колод
+    maxCardsCount: number,
+    minCardsCount: number,
+    page: number, // выбранная страница
+    pageCount: number, //количество элементов на странице
+    setSearch:string
+}
 
 const initialState = {
     cardPacks: [
@@ -21,9 +38,14 @@ const initialState = {
     minCardsCount: 0,
     page: 1, // выбранная страница
     pageCount: 4, //количество элементов на странице
+    setSearch:''
 }
 
-export type PacksActionsType = setPacksACType | createPacksACType | createCurrentPageACType | RowsPageACType
+export type PacksActionsType = setPacksACType
+    | createPacksACType
+    | createCurrentPageACType
+    | RowsPageACType
+    | setSearchInputACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -38,6 +60,9 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
         }
         case 'PACK/ROWS_PAGE': {
             return {...state, pageCount: action.rowsPage}
+        }
+        case 'PACK/SET_SEARCH_INPUT': {
+            return {...state, setSearch: action.value}
         }
         default:
             return state;
@@ -57,9 +82,13 @@ export const createCurrentPageAC = (currentPage:number) => ({type:'PACK/SET_CURR
 type RowsPageACType = ReturnType<typeof rowsPageAC>
 export const rowsPageAC = (rowsPage:number) => ({type:'PACK/ROWS_PAGE',rowsPage} as const)
 
+type setSearchInputACType = ReturnType<typeof setSearchInputAC>
+export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT',value} as const)
+
 
 export const getPacksTC = (currentPage?:number|undefined,pageCount?:number|undefined) =>
-    (dispatch: AppDispatch) => {
+    (dispatch: AppDispatch, getState:any) => {
+    const {setSearch} = getState().packs
     PacksApi.getPacks(currentPage,pageCount)
         .then((res) => {
             dispatch(setPacksAC(res.data))

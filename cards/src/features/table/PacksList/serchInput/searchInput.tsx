@@ -2,8 +2,18 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
+import {ChangeEvent} from "react";
 
-export const  SearchInput =()=>{
+type SearchInputType = {
+    setSearchInput:(value:string)=>void
+}
+
+export const  SearchInput:React.FC<SearchInputType>=({setSearchInput, ...props})=>{
+
+    const searchInputHandler = (event:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setSearchInput(event.currentTarget.value)
+    }
+
     return (
         <Stack spacing={2} sx={{ width: 300}}>
             <Autocomplete
@@ -14,7 +24,7 @@ export const  SearchInput =()=>{
                 renderInput={(params) => (
 
                     <TextField
-
+                        onChange={searchInputHandler}
                         {...params}
                         size={'small'}
                         label="Provide your text"

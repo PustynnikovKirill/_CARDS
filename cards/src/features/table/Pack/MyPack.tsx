@@ -59,8 +59,6 @@ export const MyPacks = () => {
 
                         </div>
                     }
-
-
                     <div className={style.params}>
                         <h5 className={style.search}>Search</h5>
                         <SearchInputMyPack/>
@@ -68,7 +66,6 @@ export const MyPacks = () => {
                     <div className={style.myPack}>
                         <MyCardsTable/>
                     </div>
-
                 </div>
             </div>
         </div>

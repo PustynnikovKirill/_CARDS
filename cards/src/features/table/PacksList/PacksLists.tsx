@@ -4,31 +4,32 @@ import {Button, ButtonGroup, Chip} from "@mui/material";
 import {RangeSlider} from "./RangeSlider/RangeSlider";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import {SearchInput} from "./serchInput/searchInput";
-import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch} from "../../../app/redax/store";
-import {createPackTC} from "../../../app/redax/packs-reducer";
+import {createPackTC, getPacksTC, setSearchInputAC} from "../../../app/redax/packs-reducer";
 import {PackTable} from "./StickyHeadTable/PackTable";
-
+import {useEffect} from "react";
+import {useSelector} from "react-redux";
 
 
 export const PacksList = () => {
 
     const dispatch = useAppDispatch()
-    const isLogin = useSelector<AppRootStateType>((state)=>state.auth.isLogin)
-
-    const page = useSelector<AppRootStateType, number>(state => state.packs.page)
-    const pageCount = useSelector<AppRootStateType, number>(state => state.packs.pageCount)
-
-    // useEffect(()=>{
-    //     if (isLogin) {
-    //         dispatch(getPacksTC(page,pageCount))
-    //     }
-    // },[])
+    const setSearch = useSelector<AppRootStateType, string>(state => state.packs.setSearch)
 
 
-    const addNewPackHandler=()=>{
-        dispatch(createPackTC({name:'newName',deckCover:'', private:false}))
+    useEffect(() => {
+        dispatch(getPacksTC())
+    }, [setSearch])
+
+
+    const addNewPackHandler = () => {
+        dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
     }
+
+    const setSearchInput = (value: string) => {
+        dispatch(setSearchInputAC(value))
+    }
+
     return (
         <div>
             <div className={style.table}>
@@ -42,7 +43,7 @@ export const PacksList = () => {
                     <div className={style.params}>
                         <div>
                             <h5>Search</h5>
-                            <SearchInput/>
+                            <SearchInput setSearchInput={setSearchInput}/>
                         </div>
                         <div>
                             <h5>Show packs cards</h5>
