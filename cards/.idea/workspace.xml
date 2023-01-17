@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ffea3cc-f032-4fd3-973b-6030a1a598ba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -50,7 +51,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673265900272</updated>
-      <workItem from="1673265902363" duration="20598000" />
+      <workItem from="1673265902363" duration="21007000" />
+      <workItem from="1673608575959" duration="13791000" />
     </task>
     <servers />
   </component>

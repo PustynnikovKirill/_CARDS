@@ -1,8 +1,8 @@
 import {AuthApi, LoginResponseType, LogoutType, ResponseErrorType} from "../../api/auth-api";
-import {AppDispatch} from "./store";
 import {AxiosError} from "axios";
 import {setAppErrorTC, setAppInitializedTC, setAppStatusAC, setPasswordRecoveryAC} from "./app-reducer";
 import {setProfileAC} from "./profile-reducer";
+import {AppThunk} from "./store";
 
 type InitialStateType = {
     isLogin: boolean,
@@ -84,7 +84,7 @@ export const setisInitializedAC = (isInitialized: boolean) => {
 }
 
 
-export const RegistrationTC = (email: string, password: string) => (dispatch: AppDispatch) => {
+export const RegistrationTC = (email: string, password: string):AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     return AuthApi.registration(email, password)
         .then(res => {
@@ -103,7 +103,7 @@ export const RegistrationTC = (email: string, password: string) => (dispatch: Ap
         })
 }
 
-export const LoginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: AppDispatch) => {
+export const LoginTC = (email: string, password: string, rememberMe: boolean):AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.login(email, password, rememberMe)
         .then(res => {
@@ -123,7 +123,7 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean) =>
         })
 }
 
-export const isLoginTC = () => (dispatch: AppDispatch) => {
+export const isLoginTC = ():AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.authMe()
         .then(res => {
@@ -143,7 +143,7 @@ export const isLoginTC = () => (dispatch: AppDispatch) => {
             dispatch(setAppStatusAC('succeeded'))
         })
 }
-export const logoutTC = () => (dispatch: AppDispatch) => {
+export const logoutTC = ():AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.logout()
         .then(res => {
@@ -160,7 +160,7 @@ export const logoutTC = () => (dispatch: AppDispatch) => {
         })
 }
 
-export const recoveryPasswordTC = (email:string) => (dispatch: AppDispatch) => {
+export const recoveryPasswordTC = (email:string):AppThunk => (dispatch) => {
     dispatch(setAppStatusAC('loading'))
     AuthApi.recoveryPassword(email)
         .then(res => {

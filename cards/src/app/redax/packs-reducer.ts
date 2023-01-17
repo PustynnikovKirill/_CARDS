@@ -1,7 +1,7 @@
 import {CardsPackType, PacksApi, ResponseSetNewPacks} from "../../api/packs-api";
-import {AppDispatch} from "./store";
+import { AppRootStateType, AppThunk} from "./store";
 import {PackType} from "../../features/table/PacksList/StickyHeadTable/PackTable";
-import {ChangeEvent} from "react";
+
 
 type CardPacksType = {
     _id: string,
@@ -86,9 +86,12 @@ type setSearchInputACType = ReturnType<typeof setSearchInputAC>
 export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT',value} as const)
 
 
-export const getPacksTC = (currentPage?:number|undefined,pageCount?:number|undefined) =>
-    (dispatch: AppDispatch, getState:any) => {
+
+export const getPacksTC = (currentPage?:number|undefined,pageCount?:number|undefined):AppThunk =>
+    (dispatch, getState:()=>AppRootStateType) => {
+
     const {setSearch} = getState().packs
+
     PacksApi.getPacks(currentPage,pageCount)
         .then((res) => {
             dispatch(setPacksAC(res.data))
@@ -98,8 +101,8 @@ export const getPacksTC = (currentPage?:number|undefined,pageCount?:number|undef
         })
 }
 
-export const createPackTC = (cardsPack:CardsPackType,currentPage?:number|undefined,pageSize?:number|undefined) =>
-    (dispatch: AppDispatch ) => {
+export const createPackTC = (cardsPack:CardsPackType,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk =>
+    (dispatch) => {
     PacksApi.newCardsPack(cardsPack)
         .then((res) => {
             dispatch(getPacksTC(currentPage,pageSize))
@@ -109,7 +112,7 @@ export const createPackTC = (cardsPack:CardsPackType,currentPage?:number|undefin
         })
 }
 
-export const updatePackTC = (card: PackType,currentPage?:number|undefined,pageSize?:number|undefined) => (dispatch: AppDispatch) => {
+export const updatePackTC = (card: PackType,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk => (dispatch) => {
     PacksApi.updatedCardsPack(card)
         .then((res) => {
             dispatch(getPacksTC(currentPage,pageSize))
@@ -119,7 +122,7 @@ export const updatePackTC = (card: PackType,currentPage?:number|undefined,pageSi
         })
 }
 
-export const deletePackTC = (_id: string,currentPage?:number|undefined,pageSize?:number|undefined) => (dispatch: AppDispatch) => {
+export const deletePackTC = (_id: string,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk => (dispatch) => {
     PacksApi.deletedCardsPack(_id)
         .then((res) => {
             dispatch(getPacksTC(currentPage,pageSize))

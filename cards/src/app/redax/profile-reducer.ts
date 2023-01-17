@@ -1,6 +1,7 @@
 import { Dispatch } from "redux"
 import {AuthApi} from "../../api/auth-api";
 import {setAppErrorAC, setAppInitializedAC} from "./app-reducer";
+import {AppThunk} from "./store";
 
 type InitialStateType = typeof initialState
 
@@ -37,7 +38,7 @@ type ActionsType = ReturnType<typeof setProfileAC>
 export const setProfileAC = (data:UpdateType) => ({type:'PROFILE/PROFILE',data} as const)
 
 
-export const changeTitleTC = (name: string, avatar: string) => (dispatch:Dispatch)=>{
+export const changeTitleTC = (name: string, avatar: string):AppThunk => (dispatch)=>{
     AuthApi.updateUserInfo({name, avatar: ''})
         .then((res)=>{
             if (res.data.updatedUser.name.length > 0) {
