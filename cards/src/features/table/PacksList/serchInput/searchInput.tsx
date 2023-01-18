@@ -2,17 +2,28 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
-import {ChangeEvent} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
+import {useDebounce} from "../../../../components/Debounce/Debounce";
 
 type SearchInputType = {
     setSearchInput:(value:string)=>void
 }
 
-export const  SearchInput:React.FC<SearchInputType>=({setSearchInput, ...props})=>{
+export const SearchInput:React.FC<SearchInputType>=({setSearchInput, ...props})=>{
+
+
+    let[value,setValue] = useState<string>('')
+    const debouncedValue = useDebounce<string>(value, 500)
 
     const searchInputHandler = (event:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setSearchInput(event.currentTarget.value)
+        setValue(event.currentTarget.value)
     }
+    const setSearchHandler = () => {
+        setSearchInput(value)
+    }
+    useEffect(()=>{
+        setSearchInput(debouncedValue)
+    },[debouncedValue])
 
     return (
         <Stack spacing={2} sx={{ width: 300}}>
@@ -24,7 +35,9 @@ export const  SearchInput:React.FC<SearchInputType>=({setSearchInput, ...props})
                 renderInput={(params) => (
 
                     <TextField
+                        value = {value}
                         onChange={searchInputHandler}
+                        onBlur={setSearchHandler}
                         {...params}
                         size={'small'}
                         label="Provide your text"

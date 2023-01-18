@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ffea3cc-f032-4fd3-973b-6030a1a598ba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/auth-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/packs-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packs-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/profile-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673265900272</updated>
       <workItem from="1673265902363" duration="21007000" />
-      <workItem from="1673608575959" duration="13791000" />
+      <workItem from="1673608575959" duration="28898000" />
     </task>
     <servers />
   </component>
@@ -69,5 +70,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

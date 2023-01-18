@@ -4,7 +4,7 @@ import {PackType} from "../features/table/PacksList/StickyHeadTable/PackTable";
 
 
 export const PacksApi = {
-    getPacks(currentPage:number|undefined,pageCount:number|undefined) {
+    getPacks(currentPage:number|undefined,pageCount:number|undefined, setSearch:string) {
         return instance.get<GetNewPacksType, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack?page=${currentPage}&pageCount=${pageCount}`, {
             // params: {
                 // packName: 'New Pack', // не обязательно

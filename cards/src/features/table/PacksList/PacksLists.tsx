@@ -9,12 +9,14 @@ import {createPackTC, getPacksTC, setSearchInputAC} from "../../../app/redax/pac
 import {PackTable} from "./StickyHeadTable/PackTable";
 import {useEffect} from "react";
 import {useSelector} from "react-redux";
+import {useDebounce} from "../../../components/Debounce/Debounce";
 
 
 export const PacksList = () => {
 
     const dispatch = useAppDispatch()
     const setSearch = useSelector<AppRootStateType, string>(state => state.packs.setSearch)
+
 
 
     useEffect(() => {

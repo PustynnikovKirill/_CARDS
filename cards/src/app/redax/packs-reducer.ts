@@ -87,12 +87,10 @@ export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT'
 
 
 
-export const getPacksTC = (currentPage?:number|undefined,pageCount?:number|undefined):AppThunk =>
+export const getPacksTC = (currentPage?:number|undefined, pageCount?:number|undefined):AppThunk =>
     (dispatch, getState:()=>AppRootStateType) => {
-
     const {setSearch} = getState().packs
-
-    PacksApi.getPacks(currentPage,pageCount)
+    PacksApi.getPacks(currentPage,pageCount,setSearch)
         .then((res) => {
             dispatch(setPacksAC(res.data))
         })
