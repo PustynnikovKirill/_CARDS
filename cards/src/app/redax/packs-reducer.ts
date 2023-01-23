@@ -3,6 +3,7 @@ import { AppRootStateType, AppThunk} from "./store";
 import {PackType} from "../../features/table/PacksList/StickyHeadTable/PackTable";
 
 
+
 type CardPacksType = {
     _id: string,
     user_id: string,
@@ -19,7 +20,8 @@ type InitialStateType = {
     minCardsCount: number,
     page: number, // выбранная страница
     pageCount: number, //количество элементов на странице
-    setSearch:string
+    valueSearch?:string,
+    myPacksId?:string
 }
 
 const initialState = {
@@ -38,7 +40,8 @@ const initialState = {
     minCardsCount: 0,
     page: 1, // выбранная страница
     pageCount: 4, //количество элементов на странице
-    setSearch:''
+    valueSearch:'',
+    myPacksId:''
 }
 
 export type PacksActionsType = setPacksACType
@@ -46,6 +49,7 @@ export type PacksActionsType = setPacksACType
     | createCurrentPageACType
     | RowsPageACType
     | setSearchInputACType
+    | setMyCardsACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -62,7 +66,10 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
             return {...state, pageCount: action.rowsPage}
         }
         case 'PACK/SET_SEARCH_INPUT': {
-            return {...state, setSearch: action.value}
+            return {...state, valueSearch: action.value}
+        }
+        case 'PACK/SET_MY_PACK': {
+            return {...state, myPacksId: action.myPacksId}
         }
         default:
             return state;
@@ -85,12 +92,18 @@ export const rowsPageAC = (rowsPage:number) => ({type:'PACK/ROWS_PAGE',rowsPage}
 type setSearchInputACType = ReturnType<typeof setSearchInputAC>
 export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT',value} as const)
 
+type setMyCardsACType = ReturnType<typeof setMyCardsAC>
+export const setMyCardsAC = (myPacksId:string|undefined) => {
+    console.log('setMyCardsAC', myPacksId)
+    return  {type:'PACK/SET_MY_PACK',myPacksId} as const
+}
 
 
 export const getPacksTC = (currentPage?:number|undefined, pageCount?:number|undefined):AppThunk =>
     (dispatch, getState:()=>AppRootStateType) => {
-    const {setSearch} = getState().packs
-    PacksApi.getPacks(currentPage,pageCount,setSearch)
+    const {valueSearch, myPacksId, page, pageCount} = getState().packs
+        console.log( {valueSearch, myPacksId})
+    PacksApi.getPacks(page,pageCount,valueSearch,myPacksId)
         .then((res) => {
             dispatch(setPacksAC(res.data))
         })

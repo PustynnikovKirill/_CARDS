@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ffea3cc-f032-4fd3-973b-6030a1a598ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" afterDir="false" />
+    <list default="true" id="0ce55c68-f50b-4056-a6f9-d86c8a38ae1e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/packs-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packs-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" afterDir="false" />
     </list>
@@ -14,21 +15,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2K5YR9feXrHIxOZVxYh22FWAZ4N" />
+  <component name="ProjectId" id="2Kd6iRnGXWixlEkrbJX79NWuHoM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,40 +40,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7ffea3cc-f032-4fd3-973b-6030a1a598ba" name="Changes" comment="" />
-      <created>1673265900272</created>
+      <changelist id="0ce55c68-f50b-4056-a6f9-d86c8a38ae1e" name="Changes" comment="" />
+      <created>1674292240092</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1673265900272</updated>
-      <workItem from="1673265902363" duration="21007000" />
-      <workItem from="1673608575959" duration="28898000" />
+      <updated>1674292240092</updated>
+      <workItem from="1674292243019" duration="24239000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx</url>
-          <line>7</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

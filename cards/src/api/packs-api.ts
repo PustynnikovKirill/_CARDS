@@ -4,28 +4,27 @@ import {PackType} from "../features/table/PacksList/StickyHeadTable/PackTable";
 
 
 export const PacksApi = {
-    getPacks(currentPage:number|undefined,pageCount:number|undefined, setSearch:string) {
-        return instance.get<GetNewPacksType, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack?page=${currentPage}&pageCount=${pageCount}`, {
-            // params: {
-                // packName: 'New Pack', // не обязательно
+    getPacks(currentPage:number|undefined,pageCount:number|undefined, valueSearch:string|undefined,myPacksId:string|undefined) {
+        return instance.get<GetNewPacksType, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack`, {
+            params: {
+                packName: valueSearch, // не обязательно
                 // min: 0, // не обязательно
                 // max: 0, // не обязательно
-                // sortPacks: "", // не обязательно
-                // page: 0, // не обязательно
-                // pageCount: 0, // не обязательно
-                // userId: 0,// чьи колоды не обязательно, или придут все
+                // sortPacks: valueSearch, // не обязательно
+                page: currentPage, // не обязательно
+                pageCount, // не обязательно
+                user_id:myPacksId,// чьи колоды не обязательно, или придут все
                 // block: true // не обязательно
 // если вас кто-то забанил. То с помощью
 // данного параметра можно увидеть свои колоды
 // и поправить их или удалить или обжаловать 🙃
-//             }
+            }
         })
     },
     newCardsPack(cardsPack: CardsPackType) {
         return instance.post<RecoveryPacksType>('/cards/pack',
             {
                 cardsPack: cardsPack
-
             }
         )
     },
