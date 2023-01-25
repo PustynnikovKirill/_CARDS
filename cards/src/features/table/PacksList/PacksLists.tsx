@@ -10,13 +10,18 @@ import {PackTable} from "./StickyHeadTable/PackTable";
 import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 
+
+
 export const PacksList = () => {
+
     const [searchParams, setSearchParams] = useSearchParams()
 
     const dispatch = useAppDispatch()
     const valueSearch = useAppSelector(state => state.packs.valueSearch)
     const userId = useAppSelector(state => state.auth.data._id)
     const myPacksId = useAppSelector(state => state.packs.myPacksId)
+    const rangeSlider = useAppSelector(state => state.packs.rangeSlider)
+
 
     const name = searchParams.get('name')
 
@@ -30,7 +35,7 @@ export const PacksList = () => {
 
     useEffect(() => {
         dispatch(getPacksTC())
-    }, [valueSearch, myPacksId])
+    }, [valueSearch, myPacksId, rangeSlider])
 
     const addNewPackHandler = () => {
         dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
@@ -38,7 +43,6 @@ export const PacksList = () => {
     const setSearchInput = (value: string) => {
         dispatch(setSearchInputAC(value))
     }
-
 
     const myButtonHandler = () => {
         setSearchParams({name: 'my'})

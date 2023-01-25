@@ -138,7 +138,7 @@ export const PackTable: React.FC = (props) => {
                                     {createData(card.updated)}
                                 </TableCell>
                                 <TableCell align={'center'}>
-                                    {card.user_id}
+                                    {card.user_name}
                                 </TableCell>
                                 <TableCell align={'right'}>
                                     <SchoolIcon/><BorderColorIcon onClick={updatePackHandler}/><DeleteIcon
@@ -171,4 +171,5 @@ export type PackType = {
     cardsCount?: number,
     created?: string,
     updated?: string,
+    user_name?:string
 }

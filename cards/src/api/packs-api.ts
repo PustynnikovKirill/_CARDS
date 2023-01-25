@@ -4,12 +4,13 @@ import {PackType} from "../features/table/PacksList/StickyHeadTable/PackTable";
 
 
 export const PacksApi = {
-    getPacks(currentPage:number|undefined,pageCount:number|undefined, valueSearch:string|undefined,myPacksId:string|undefined) {
+    getPacks(currentPage:number|undefined,pageCount:number|undefined, valueSearch:string|undefined,myPacksId:string|undefined, min?:number,max?:number) {
+        console.log('maxmin', max, min)
         return instance.get<GetNewPacksType, AxiosResponse<ResponseSetNewPacks>>(`/cards/pack`, {
             params: {
                 packName: valueSearch, // не обязательно
-                // min: 0, // не обязательно
-                // max: 0, // не обязательно
+                min, // не обязательно
+                max, // не обязательно
                 // sortPacks: valueSearch, // не обязательно
                 page: currentPage, // не обязательно
                 pageCount, // не обязательно
@@ -62,6 +63,7 @@ export type ResponseSetNewPacks = {
             cardsCount: number,
             created: string,
             updated: string,
+            user_name:string
         },
     ]
     cardPacksTotalCount: number, // количество колод

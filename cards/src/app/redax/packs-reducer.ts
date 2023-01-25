@@ -11,6 +11,7 @@ type CardPacksType = {
     cardsCount: number,
     created: string,
     updated: string,
+    user_name:string
 }
 
 type InitialStateType = {
@@ -21,7 +22,8 @@ type InitialStateType = {
     page: number, // выбранная страница
     pageCount: number, //количество элементов на странице
     valueSearch?:string,
-    myPacksId?:string
+    myPacksId?:string,
+    rangeSlider?:number[]
 }
 
 const initialState = {
@@ -33,6 +35,7 @@ const initialState = {
             cardsCount: 0,
             created: '',
             updated: '',
+            user_name:''
         },
     ],
     cardPacksTotalCount: 0, // количество колод
@@ -41,7 +44,8 @@ const initialState = {
     page: 1, // выбранная страница
     pageCount: 4, //количество элементов на странице
     valueSearch:'',
-    myPacksId:''
+    myPacksId:'',
+    rangeSlider:[]
 }
 
 export type PacksActionsType = setPacksACType
@@ -50,6 +54,7 @@ export type PacksActionsType = setPacksACType
     | RowsPageACType
     | setSearchInputACType
     | setMyCardsACType
+    | packRangeACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -70,6 +75,10 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
         }
         case 'PACK/SET_MY_PACK': {
             return {...state, myPacksId: action.myPacksId}
+        }
+        case 'PACK/RANGE_SLIDER': {
+            console.log('action.rangeSliderValue', action)
+            return {...state, rangeSlider:[...action.rangeSliderValue]}
         }
         default:
             return state;
@@ -93,18 +102,25 @@ type setSearchInputACType = ReturnType<typeof setSearchInputAC>
 export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT',value} as const)
 
 type setMyCardsACType = ReturnType<typeof setMyCardsAC>
-export const setMyCardsAC = (myPacksId:string|undefined) => {
-    console.log('setMyCardsAC', myPacksId)
+export const setMyCardsAC = (myPacksId:string | undefined) => {
     return  {type:'PACK/SET_MY_PACK',myPacksId} as const
+}
+
+type packRangeACType = ReturnType<typeof packRangeAC>
+export const packRangeAC = (rangeSliderValue:number[]) => {
+    console.log('rangeSliderValueAC', rangeSliderValue)
+    return {type:'PACK/RANGE_SLIDER', rangeSliderValue} as const
 }
 
 
 export const getPacksTC = (currentPage?:number|undefined, pageCount?:number|undefined):AppThunk =>
     (dispatch, getState:()=>AppRootStateType) => {
-    const {valueSearch, myPacksId, page, pageCount} = getState().packs
-        console.log( {valueSearch, myPacksId})
-    PacksApi.getPacks(page,pageCount,valueSearch,myPacksId)
+    const {valueSearch, myPacksId, page, pageCount,rangeSlider} = getState().packs
+         const min = rangeSlider && rangeSlider[0]
+        const max = rangeSlider && rangeSlider[1]
+    PacksApi.getPacks(page,pageCount,valueSearch,myPacksId,min,max)
         .then((res) => {
+
             dispatch(setPacksAC(res.data))
         })
         .catch(() => {

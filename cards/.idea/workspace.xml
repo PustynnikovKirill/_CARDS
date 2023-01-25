@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ce55c68-f50b-4056-a6f9-d86c8a38ae1e" name="Changes" comment="">
+    <list default="true" id="5d4a6e96-c8c7-4381-b33e-df320f4e37f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/packs-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/packs-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Debounce/Debounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/serchInput/searchInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +21,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Kd6iRnGXWixlEkrbJX79NWuHoM" />
+  <component name="ProjectId" id="2KmmEF7mA6awnGPhXiaOWrOARyc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,12 +40,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0ce55c68-f50b-4056-a6f9-d86c8a38ae1e" name="Changes" comment="" />
-      <created>1674292240092</created>
+      <changelist id="5d4a6e96-c8c7-4381-b33e-df320f4e37f0" name="Changes" comment="" />
+      <created>1674588018896</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1674292240092</updated>
-      <workItem from="1674292243019" duration="24239000" />
+      <updated>1674588018896</updated>
+      <workItem from="1674588024364" duration="19071000" />
     </task>
     <servers />
   </component>
