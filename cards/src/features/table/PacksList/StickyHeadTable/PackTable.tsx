@@ -106,59 +106,65 @@ export const PackTable: React.FC = (props) => {
     }, [])
 
     return (
-        <Paper sx={{width: '100%', overflow: 'hidden'}}>
-            <TableContainer sx={{maxHeight: 440}}>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{minWidth: column.minWidth}}
-                                >
-                                    {column.label}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {cardPacks.map((card) => {
-                            const updatePackHandler = () => {
-                                dispatch(updatePackTC({_id: card._id, name: 'UpdatePack'}))
-                            }
-                            return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
-                                <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
-                                    {card.name}
-                                </TableCell>
-                                <TableCell align={'left'}>
-                                    {card.cardsCount}
-                                </TableCell>
-                                <TableCell align={'right'}>
-                                    {createData(card.updated)}
-                                </TableCell>
-                                <TableCell align={'center'}>
-                                    {card.user_name}
-                                </TableCell>
-                                <TableCell align={'right'}>
-                                    <SchoolIcon/><BorderColorIcon onClick={updatePackHandler}/><DeleteIcon
-                                    onClick={() => deletePackHandler(card._id)}/>
-                                </TableCell>
-                            </TableRow>
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[2, 4]}
-                component="div"
-                count={cardPacksTotalCount}
-                rowsPerPage={pageCount}
-                page={page - 1}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
+        <>
+            {cardPacks.length
+                ? <Paper sx={{width: '100%', overflow: 'hidden'}}>
+                    <TableContainer sx={{maxHeight: 440}}>
+                        <Table stickyHeader aria-label="sticky table">
+                            <TableHead>
+                                <TableRow>
+                                    {columns.map((column) => (
+                                        <TableCell
+                                            key={column.id}
+                                            align={column.align}
+                                            style={{minWidth: column.minWidth}}
+                                        >
+                                            {column.label}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {cardPacks.map((card) => {
+                                    const updatePackHandler = () => {
+                                        dispatch(updatePackTC({_id: card._id, name: 'UpdatePack'}))
+                                    }
+                                    return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
+                                        <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
+                                            {card.name}
+                                        </TableCell>
+                                        <TableCell align={'left'}>
+                                            {card.cardsCount}
+                                        </TableCell>
+                                        <TableCell align={'right'}>
+                                            {createData(card.updated)}
+                                        </TableCell>
+                                        <TableCell align={'center'}>
+                                            {card.user_name}
+                                        </TableCell>
+                                        <TableCell align={'right'}>
+                                            <SchoolIcon/><BorderColorIcon onClick={updatePackHandler}/><DeleteIcon
+                                            onClick={() => deletePackHandler(card._id)}/>
+                                        </TableCell>
+                                    </TableRow>
+                                })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        rowsPerPageOptions={[2, 4]}
+                        component="div"
+                        count={cardPacksTotalCount}
+                        rowsPerPage={pageCount}
+                        page={page - 1}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper>
+                : <div>Колоды с данным именем не найденно, измените параметры поиска</div>
+            }
+        </>
+
     );
 }
 
@@ -171,5 +177,5 @@ export type PackType = {
     cardsCount?: number,
     created?: string,
     updated?: string,
-    user_name?:string
+    user_name?: string
 }

@@ -10,11 +10,16 @@ import {useAppDispatch} from "../../../../app/redax/store";
 function valuetext(value: number) {
     return `${value}°C`;
 }
+type RangeSliderType = {
+    minCardsCount:number,
+    maxCardsCount:number
+}
 
-export const RangeSlider = () => {
+export const RangeSlider: React.FC<RangeSliderType> = ({minCardsCount,maxCardsCount}) => {
     const dispatch = useAppDispatch()
 
-    const [value, setValue] = React.useState<number[]>([0, 100]);
+    const [value, setValue] = React.useState<number[]>([minCardsCount, maxCardsCount]);
+
     const debouncedValue = useDebounce<number[]>(value, 2000)
 
     useEffect(() => {

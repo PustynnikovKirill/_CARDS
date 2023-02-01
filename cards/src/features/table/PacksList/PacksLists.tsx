@@ -5,11 +5,16 @@ import {RangeSlider} from "./RangeSlider/RangeSlider";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import {SearchInput} from "./serchInput/searchInput";
 import {useAppDispatch, useAppSelector} from "../../../app/redax/store";
-import {createPackTC, getPacksTC, setMyCardsAC, setSearchInputAC} from "../../../app/redax/packs-reducer";
+import {
+    createPackTC,
+    getPacksTC,
+    resetFiltersAC,
+    setMyCardsAC,
+    setSearchInputAC
+} from "../../../app/redax/packs-reducer";
 import {PackTable} from "./StickyHeadTable/PackTable";
 import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
-
 
 
 export const PacksList = () => {
@@ -17,10 +22,14 @@ export const PacksList = () => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const dispatch = useAppDispatch()
+
     const valueSearch = useAppSelector(state => state.packs.valueSearch)
     const userId = useAppSelector(state => state.auth.data._id)
     const myPacksId = useAppSelector(state => state.packs.myPacksId)
     const rangeSlider = useAppSelector(state => state.packs.rangeSlider)
+    const minCardsCount = useAppSelector(state => state.packs.minCardsCount)
+    const maxCardsCount = useAppSelector(state => state.packs.maxCardsCount)
+
 
 
     const name = searchParams.get('name')
@@ -35,7 +44,7 @@ export const PacksList = () => {
 
     useEffect(() => {
         dispatch(getPacksTC())
-    }, [valueSearch, myPacksId, rangeSlider])
+    }, [valueSearch, myPacksId, rangeSlider, minCardsCount, maxCardsCount])
 
     const addNewPackHandler = () => {
         dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
@@ -51,6 +60,9 @@ export const PacksList = () => {
     const allButtonHandler = () => {
         setSearchParams({name: 'all'})
         dispatch(setMyCardsAC(''))
+    }
+    const resetFiltersHandler = () => {
+        dispatch(resetFiltersAC())
     }
 
     if (searchParams.get.name === 'my') {
@@ -88,10 +100,11 @@ export const PacksList = () => {
                         </div>
                         <div>
                             <h5>Number of cards</h5>
-                            <RangeSlider/>
+                            <RangeSlider minCardsCount={minCardsCount} maxCardsCount={maxCardsCount}/>
                         </div>
                         <div className={style.filter}>
-                            <FilterAltIcon style={{color: '#1976d2'}} fontSize={'large'}/>
+                                <FilterAltIcon style={{color: '#1976d2'}} fontSize={'large'}
+                                               onClick={resetFiltersHandler}/>
                         </div>
                     </div>
                     <div className={style.headTable}>

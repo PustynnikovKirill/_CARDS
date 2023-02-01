@@ -1,7 +1,6 @@
 import {CardsPackType, PacksApi, ResponseSetNewPacks} from "../../api/packs-api";
-import { AppRootStateType, AppThunk} from "./store";
+import {AppRootStateType, AppThunk} from "./store";
 import {PackType} from "../../features/table/PacksList/StickyHeadTable/PackTable";
-
 
 
 type CardPacksType = {
@@ -11,7 +10,7 @@ type CardPacksType = {
     cardsCount: number,
     created: string,
     updated: string,
-    user_name:string
+    user_name: string
 }
 
 type InitialStateType = {
@@ -21,9 +20,9 @@ type InitialStateType = {
     minCardsCount: number,
     page: number, // выбранная страница
     pageCount: number, //количество элементов на странице
-    valueSearch?:string,
-    myPacksId?:string,
-    rangeSlider?:number[]
+    valueSearch?: string,
+    myPacksId?: string,
+    rangeSlider?: number[]
 }
 
 const initialState = {
@@ -35,7 +34,7 @@ const initialState = {
             cardsCount: 0,
             created: '',
             updated: '',
-            user_name:''
+            user_name: ''
         },
     ],
     cardPacksTotalCount: 0, // количество колод
@@ -43,9 +42,9 @@ const initialState = {
     minCardsCount: 0,
     page: 1, // выбранная страница
     pageCount: 4, //количество элементов на странице
-    valueSearch:'',
-    myPacksId:'',
-    rangeSlider:[]
+    valueSearch: '',
+    myPacksId: '',
+    rangeSlider: [0, 100]
 }
 
 export type PacksActionsType = setPacksACType
@@ -55,6 +54,7 @@ export type PacksActionsType = setPacksACType
     | setSearchInputACType
     | setMyCardsACType
     | packRangeACType
+    | resetFiltersACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -77,8 +77,10 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
             return {...state, myPacksId: action.myPacksId}
         }
         case 'PACK/RANGE_SLIDER': {
-            console.log('action.rangeSliderValue', action)
-            return {...state, rangeSlider:[...action.rangeSliderValue]}
+            return {...state, rangeSlider: [...action.rangeSliderValue]}
+        }
+        case 'PACK/RESET_FILTERS': {
+            return {...state, valueSearch: '', myPacksId: '', rangeSlider: []}
         }
         default:
             return state;
@@ -93,66 +95,69 @@ type createPacksACType = ReturnType<typeof createPackAC>
 export const createPackAC = () => ({type: 'PACK/CREATE-PACK'} as const)
 
 type createCurrentPageACType = ReturnType<typeof createCurrentPageAC>
-export const createCurrentPageAC = (currentPage:number) => ({type:'PACK/SET_CURRENT_PAGE',currentPage} as const)
+export const createCurrentPageAC = (currentPage: number) => ({type: 'PACK/SET_CURRENT_PAGE', currentPage} as const)
 
 type RowsPageACType = ReturnType<typeof rowsPageAC>
-export const rowsPageAC = (rowsPage:number) => ({type:'PACK/ROWS_PAGE',rowsPage} as const)
+export const rowsPageAC = (rowsPage: number) => ({type: 'PACK/ROWS_PAGE', rowsPage} as const)
 
 type setSearchInputACType = ReturnType<typeof setSearchInputAC>
-export const setSearchInputAC = (value:string) => ({type:'PACK/SET_SEARCH_INPUT',value} as const)
+export const setSearchInputAC = (value: string) => ({type: 'PACK/SET_SEARCH_INPUT', value} as const)
 
 type setMyCardsACType = ReturnType<typeof setMyCardsAC>
-export const setMyCardsAC = (myPacksId:string | undefined) => {
-    return  {type:'PACK/SET_MY_PACK',myPacksId} as const
+export const setMyCardsAC = (myPacksId: string | undefined) => {
+    return {type: 'PACK/SET_MY_PACK', myPacksId} as const
 }
 
 type packRangeACType = ReturnType<typeof packRangeAC>
-export const packRangeAC = (rangeSliderValue:number[]) => {
-    console.log('rangeSliderValueAC', rangeSliderValue)
-    return {type:'PACK/RANGE_SLIDER', rangeSliderValue} as const
+export const packRangeAC = (rangeSliderValue: number[]) => {
+    return {type: 'PACK/RANGE_SLIDER', rangeSliderValue} as const
+}
+
+type resetFiltersACType = ReturnType<typeof resetFiltersAC>
+export const resetFiltersAC = () => {
+    return {type: 'PACK/RESET_FILTERS'} as const
 }
 
 
-export const getPacksTC = (currentPage?:number|undefined, pageCount?:number|undefined):AppThunk =>
-    (dispatch, getState:()=>AppRootStateType) => {
-    const {valueSearch, myPacksId, page, pageCount,rangeSlider} = getState().packs
-         const min = rangeSlider && rangeSlider[0]
+export const getPacksTC = (currentPage?: number | undefined, pageCount?: number | undefined): AppThunk =>
+    (dispatch, getState: () => AppRootStateType) => {
+        const {valueSearch, myPacksId, page, pageCount, rangeSlider} = getState().packs
+        const min = rangeSlider && rangeSlider[0]
         const max = rangeSlider && rangeSlider[1]
-    PacksApi.getPacks(page,pageCount,valueSearch,myPacksId,min,max)
-        .then((res) => {
+        PacksApi.getPacks(page, pageCount, valueSearch, myPacksId, min, max)
+            .then((res) => {
+                dispatch(setPacksAC(res.data))
+            })
+            .catch(() => {
 
-            dispatch(setPacksAC(res.data))
-        })
-        .catch(() => {
+            })
+    }
 
-        })
-}
-
-export const createPackTC = (cardsPack:CardsPackType,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk =>
+export const createPackTC = (cardsPack: CardsPackType, currentPage?: number | undefined, pageSize?: number | undefined): AppThunk =>
     (dispatch) => {
-    PacksApi.newCardsPack(cardsPack)
-        .then((res) => {
-            dispatch(getPacksTC(currentPage,pageSize))
-        })
-        .catch(() => {
+        PacksApi.newCardsPack(cardsPack)
+            .then((res) => {
+                dispatch(getPacksTC(currentPage, pageSize))
+            })
+            .catch(() => {
 
-        })
-}
+            })
+    }
 
-export const updatePackTC = (card: PackType,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk => (dispatch) => {
+export const updatePackTC = (card: PackType, currentPage?: number | undefined, pageSize?: number | undefined): AppThunk => (dispatch) => {
     PacksApi.updatedCardsPack(card)
         .then((res) => {
-            dispatch(getPacksTC(currentPage,pageSize))
+            dispatch(getPacksTC(currentPage, pageSize))
         })
         .catch(() => {
 
         })
 }
 
-export const deletePackTC = (_id: string,currentPage?:number|undefined,pageSize?:number|undefined):AppThunk => (dispatch) => {
+export const deletePackTC = (_id: string, currentPage?: number | undefined, pageSize?: number | undefined): AppThunk => (dispatch) => {
     PacksApi.deletedCardsPack(_id)
         .then((res) => {
-            dispatch(getPacksTC(currentPage,pageSize))
+            dispatch(getPacksTC(currentPage, pageSize))
         })
         .catch(() => {
 
