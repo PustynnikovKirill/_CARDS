@@ -1,4 +1,4 @@
-import {Routes, Route, Navigate} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import {Login} from "../Login/Login";
 import {Registration} from "../Registration/Registration";
 import {Profile} from "../Profile/Profile";
@@ -10,6 +10,7 @@ import {CheckEmail} from "../PasswordRecovery/CheckEmail/CheckiEmail";
 import {EnteringNewPassword} from "../EnteringNewPassword/EnteringNewPassword";
 import {PacksList} from "../table/PacksList/PacksLists";
 import {MyPacks} from "../table/Pack/MyPack";
+import {AddModal} from "../Profile/modals/AddModal";
 
 
 
@@ -26,6 +27,7 @@ export const PATH = {
     CHECK_EMAIL:'/checkEmail',
     PACKS_LISTS:'/packsLists',
     MY_PACK_TABLE:'/myPackTable',
+    ADD_MODAL:'/addModal',
 }
 
 export const Pages=()=> {
@@ -49,6 +51,7 @@ export const Pages=()=> {
                 <Route path={PATH.ENTERING_A_NEW_PASSWORD} element={<EnteringNewPassword/>}/>
                 <Route path={PATH.PACKS_LISTS} element={<PacksList/>}/>
                 <Route path={PATH.MY_PACK_TABLE} element={<MyPacks/>}/>
+                <Route path={PATH.ADD_MODAL} element={<AddModal/>}/>
             </Routes>
         </div>
     )

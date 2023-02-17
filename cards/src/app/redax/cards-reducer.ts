@@ -23,7 +23,8 @@ const initialState = {
     pageCount: 4,
     packUserId: '',
     currentCardsPack_id: '',
-    flagCard: false
+    flagCard: false,
+    searchValueCard:''
 }
 
 export type CardsActionsType =
@@ -32,6 +33,7 @@ export type CardsActionsType =
     | pageCountChangeACType
     | currentCardsPackACTypeType
     | cardChangeMyOrFriendType
+    | setSearchType
 
 export const cardsReducer = (state: InitialStateType = initialState, action: CardsActionsType): InitialStateType => {
     switch (action.type) {
@@ -49,6 +51,9 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Car
         }
         case 'CARDS/CHANGE_MY_OR_FRIEND': {
             return {...state, flagCard: action.flagCard}
+        }
+        case 'CARDS/CARD_SET_SEARCH': {
+            return {...state, searchValueCard: action.searchValueCard}
         }
         default:
             return state;
@@ -79,6 +84,11 @@ export const cardChangeMyOrFriend = (flagCard: boolean) => ({
     flagCard
 } as const)
 
+type setSearchType = ReturnType<typeof setSearchCards>
+export const setSearchCards = (searchValueCard:string) => ({
+    type: 'CARDS/CARD_SET_SEARCH',
+    searchValueCard
+} as const)
 
 export const getCardsTC = (data: getCardsParamsType) => (dispatch: AppDispatch,) => {
     CardsApi.getCards(data)
@@ -101,17 +111,18 @@ export const createCardsTC = (card: CreateCardsType) => (dispatch: AppDispatch) 
         })
 }
 
-export const changeCardTC = (card:ChangeCardsType) => (dispatch: AppDispatch) => {
+export const changeCardTC = (card: ChangeCardsType) => (dispatch: AppDispatch) => {
     CardsApi.updatedCard(card)
         .then((res) => {
-            dispatch(getCardsTC({cardsPack_id:card.cardsPack_id}))
+            dispatch(getCardsTC({cardsPack_id: card.cardsPack_id}))
         })
         .catch(() => {
 
         })
 }
-export const deleteCardTC = (_id:string,cardsPack_id:string) => (dispatch: AppDispatch) => {
-    CardsApi.deleteCard(_id,cardsPack_id)
+
+export const deleteCardTC = (_id: string, cardsPack_id: string) => (dispatch: AppDispatch) => {
+    CardsApi.deleteCard(_id, cardsPack_id)
         .then((res) => {
             dispatch(getCardsTC({cardsPack_id}))
         })
@@ -119,7 +130,6 @@ export const deleteCardTC = (_id:string,cardsPack_id:string) => (dispatch: AppDi
 
         })
 }
-
 
 type CardType = {
     answer: string,
@@ -142,5 +152,6 @@ type InitialStateType = {
     pageCount: number | undefined,
     packUserId: string,
     currentCardsPack_id: string,
-    flagCard: boolean
+    flagCard: boolean,
+    searchValueCard:string
 }

@@ -6,9 +6,10 @@ import {MyCardsTable} from "./MyPackTable/MyCardsTable";
 import {SearchInputMyPack} from "./serchInputMyPack/searchInputMyPack";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {useSelector} from "react-redux";
-import {AppRootStateType, useAppDispatch} from "../../../app/redax/store";
+import {AppRootStateType, useAppDispatch, useAppSelector} from "../../../app/redax/store";
 import {Navigate, useNavigate} from "react-router-dom";
-import {createCardsTC} from "../../../app/redax/cards-reducer";
+import {createCardsTC, getCardsTC, setSearchCards} from "../../../app/redax/cards-reducer";
+import {useEffect} from "react";
 
 
 export const MyPacks = () => {
@@ -18,6 +19,15 @@ export const MyPacks = () => {
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
     const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
     const flagCard = useSelector<AppRootStateType, boolean>(state => state.cards.flagCard)
+    const searchValueCard = useAppSelector(state=>state.cards.searchValueCard)
+
+    useEffect(() => {
+        getCardsTC({cardsPack_id})
+    }, [searchValueCard])
+
+    const setValueHandler = (valueSearch:string)=>{
+        dispatch(setSearchCards(valueSearch))
+    }
 
     const addNewCardHandler = () => {
         dispatch(createCardsTC({cardsPack_id}))
@@ -61,7 +71,7 @@ export const MyPacks = () => {
                     }
                     <div className={style.params}>
                         <h5 className={style.search}>Search</h5>
-                        <SearchInputMyPack/>
+                        <SearchInputMyPack setSearchValue={setValueHandler}/>
                     </div>
                     <div className={style.myPack}>
                         <MyCardsTable/>

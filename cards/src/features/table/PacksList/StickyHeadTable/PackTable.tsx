@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,7 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import {useSelector} from "react-redux";
-import {AppRootStateType, useAppDispatch} from "../../../../app/redax/store";
+import {AppRootStateType, useAppDispatch, useAppSelector} from "../../../../app/redax/store";
 import SchoolIcon from '@mui/icons-material/School';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,6 +22,7 @@ import {
 import {cardChangeMyOrFriend, getCardsTC} from "../../../../app/redax/cards-reducer";
 import {useNavigate} from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
+import {IconButton} from "@mui/material";
 
 interface Column {
     id: 'name' | 'cards' | 'LastUpdated' | 'createdBy' | 'actions';
@@ -60,7 +61,7 @@ const columns: readonly Column[] = [
 export const PackTable: React.FC = (props) => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-    const cardPacks = useSelector<AppRootStateType, CardPacksType>(state => state.packs.cardPacks)
+    const cardPacks = useAppSelector(state => state.packs.cardPacks)
     const page = useSelector<AppRootStateType, number>(state => state.packs.page)
     const pageCount = useSelector<AppRootStateType, number>(state => state.packs.pageCount)
     const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.packs.cardPacksTotalCount)
@@ -79,7 +80,6 @@ export const PackTable: React.FC = (props) => {
         dispatch(getPacksTC(page, +event.target.value))
     };
 
-
     const createData = (data: any) => {
         return new Date(data).toLocaleDateString();
     }
@@ -89,7 +89,6 @@ export const PackTable: React.FC = (props) => {
     }
 
     const onClickToCardsHandler = (idPack: string, user_id: string | undefined) => {
-
         if (user_id === userId) {
             dispatch(cardChangeMyOrFriend(true))
         } else {
@@ -125,7 +124,7 @@ export const PackTable: React.FC = (props) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {cardPacks.map((card) => {
+                                {cardPacks?.map((card) => {
                                     const updatePackHandler = () => {
                                         dispatch(updatePackTC({_id: card._id, name: 'UpdatePack'}))
                                     }
@@ -143,8 +142,26 @@ export const PackTable: React.FC = (props) => {
                                             {card.user_name}
                                         </TableCell>
                                         <TableCell align={'right'}>
-                                            <SchoolIcon/><BorderColorIcon onClick={updatePackHandler}/><DeleteIcon
-                                            onClick={() => deletePackHandler(card._id)}/>
+                                            {
+                                                card.user_id === userId
+                                                    ? <><IconButton disabled = {card.cardsCount === 0}>
+                                                        <SchoolIcon/>
+                                                    </IconButton>
+                                                        <IconButton disabled = {card.cardsCount === 0}>
+                                                            <BorderColorIcon onClick={updatePackHandler}/>
+                                                        </IconButton>
+                                                        <IconButton disabled = {card.cardsCount === 0}>
+                                                            <DeleteIcon
+                                                                onClick={() => deletePackHandler(card._id)}/>
+                                                        </IconButton>
+                                                       </>
+                                                    :
+                                                    <IconButton disabled = {card.cardsCount === 0}>
+                                                        <SchoolIcon
+                                                        />
+                                                    </IconButton>
+
+                                            }
                                         </TableCell>
                                     </TableRow>
                                 })}

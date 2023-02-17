@@ -23,7 +23,6 @@ export const Login = () => {
                     <h1 className={style.title}>Sing In</h1>
                     <InputLoginData/>
                     {/*<Chip label="Sing Up" color="primary" style={{width: '73%', marginTop: '10px'}}/>*/}
-
                 </div>
             </Paper>
         </div>

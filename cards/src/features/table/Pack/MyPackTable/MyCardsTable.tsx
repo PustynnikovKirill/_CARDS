@@ -74,9 +74,7 @@ const columns: readonly Column[] = [
 //     return {question, answer, lastUpdated, crade, actions};
 // }
 
-
 export const MyCardsTable = () => {
-
     const dispatch = useAppDispatch()
     const cards = useSelector<AppRootStateType, CardType[]>(state => state.cards.cards)
     const page = useSelector<AppRootStateType, number | undefined>(state => state.cards.page)
@@ -84,7 +82,6 @@ export const MyCardsTable = () => {
     const packUserId = useSelector<AppRootStateType, string>(state => state.cards.packUserId)
     const cardsTotalCount = useSelector<AppRootStateType, number>(state => state.cards.cardsTotalCount)
     const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
-
 
     const handleChangePage = (event: unknown, newPage: number) => {
         newPage = newPage + 1

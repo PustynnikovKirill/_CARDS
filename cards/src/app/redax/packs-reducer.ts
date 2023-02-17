@@ -3,7 +3,7 @@ import {AppRootStateType, AppThunk} from "./store";
 import {PackType} from "../../features/table/PacksList/StickyHeadTable/PackTable";
 
 
-type CardPacksType = {
+export type CardPacksTypeReturn = {
     _id: string,
     user_id: string,
     name: string,
@@ -13,8 +13,8 @@ type CardPacksType = {
     user_name: string
 }
 
-type InitialStateType = {
-    cardPacks: CardPacksType[],
+export type InitialStateType = {
+    cardPacks: CardPacksTypeReturn[],
     cardPacksTotalCount: number, // количество колод
     maxCardsCount: number,
     minCardsCount: number,
@@ -22,7 +22,8 @@ type InitialStateType = {
     pageCount: number, //количество элементов на странице
     valueSearch?: string,
     myPacksId?: string,
-    rangeSlider?: number[]
+    rangeSlider?: number[],
+    modal:boolean
 }
 
 const initialState = {
@@ -44,7 +45,8 @@ const initialState = {
     pageCount: 4, //количество элементов на странице
     valueSearch: '',
     myPacksId: '',
-    rangeSlider: [0, 100]
+    rangeSlider: [0, 100],
+    modal:false
 }
 
 export type PacksActionsType = setPacksACType
@@ -55,6 +57,7 @@ export type PacksActionsType = setPacksACType
     | setMyCardsACType
     | packRangeACType
     | resetFiltersACType
+    | addModalACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -81,6 +84,9 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
         }
         case 'PACK/RESET_FILTERS': {
             return {...state, valueSearch: '', myPacksId: '', rangeSlider: []}
+        }
+        case 'PACK/ADD_MODAL': {
+            return {...state, modal:action.modal}
         }
         default:
             return state;
@@ -117,7 +123,10 @@ type resetFiltersACType = ReturnType<typeof resetFiltersAC>
 export const resetFiltersAC = () => {
     return {type: 'PACK/RESET_FILTERS'} as const
 }
-
+type addModalACType = ReturnType<typeof addModalAC>
+export const addModalAC = (modal:boolean) => {
+    return {type: 'PACK/ADD_MODAL', modal} as const
+}
 
 export const getPacksTC = (currentPage?: number | undefined, pageCount?: number | undefined): AppThunk =>
     (dispatch, getState: () => AppRootStateType) => {
@@ -144,7 +153,7 @@ export const createPackTC = (cardsPack: CardsPackType, currentPage?: number | un
             })
     }
 
-export const updatePackTC = (card: PackType, currentPage?: number | undefined, pageSize?: number | undefined): AppThunk => (dispatch) => {
+export const updatePackTC = (card: PackType, currentPage?: number, pageSize?: number): AppThunk => (dispatch) => {
     PacksApi.updatedCardsPack(card)
         .then((res) => {
             dispatch(getPacksTC(currentPage, pageSize))
@@ -154,7 +163,7 @@ export const updatePackTC = (card: PackType, currentPage?: number | undefined, p
         })
 }
 
-export const deletePackTC = (_id: string, currentPage?: number | undefined, pageSize?: number | undefined): AppThunk => (dispatch) => {
+export const deletePackTC = (_id: string, currentPage?: number, pageSize?: number): AppThunk => (dispatch) => {
     PacksApi.deletedCardsPack(_id)
         .then((res) => {
             dispatch(getPacksTC(currentPage, pageSize))

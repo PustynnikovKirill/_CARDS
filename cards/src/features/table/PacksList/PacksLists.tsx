@@ -6,6 +6,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import {SearchInput} from "./serchInput/searchInput";
 import {useAppDispatch, useAppSelector} from "../../../app/redax/store";
 import {
+    addModalAC,
     createPackTC,
     getPacksTC,
     resetFiltersAC,
@@ -14,7 +15,7 @@ import {
 } from "../../../app/redax/packs-reducer";
 import {PackTable} from "./StickyHeadTable/PackTable";
 import {useEffect} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 
 export const PacksList = () => {
@@ -22,6 +23,7 @@ export const PacksList = () => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const valueSearch = useAppSelector(state => state.packs.valueSearch)
     const userId = useAppSelector(state => state.auth.data._id)
@@ -47,7 +49,10 @@ export const PacksList = () => {
     }, [valueSearch, myPacksId, rangeSlider, minCardsCount, maxCardsCount])
 
     const addNewPackHandler = () => {
-        dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
+        navigate('/addModal')
+        dispatch(addModalAC(true))
+        // dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
+
     }
     const setSearchInput = (value: string) => {
         dispatch(setSearchInputAC(value))

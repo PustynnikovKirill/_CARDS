@@ -18,7 +18,11 @@ type RangeSliderType = {
 export const RangeSlider: React.FC<RangeSliderType> = ({minCardsCount,maxCardsCount}) => {
     const dispatch = useAppDispatch()
 
-    const [value, setValue] = React.useState<number[]>([minCardsCount, maxCardsCount]);
+    const [value, setValue] = React.useState<number[]>([0, 0]);
+
+    useEffect(() => {
+        setValue([minCardsCount, maxCardsCount])
+    }, [minCardsCount, maxCardsCount])
 
     const debouncedValue = useDebounce<number[]>(value, 2000)
 

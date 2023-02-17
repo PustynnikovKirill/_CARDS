@@ -1,0 +1,27 @@
+.addModal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 74%;
+  .header{
+    display: flex;
+    flex-direction: row;
+  }
+  .genericButton{
+    display: flex;
+    flex-direction: row;
+    .button {
+      border-radius: 18px;
+      margin-top:20px;
+      width: 120px;
+      height: 36px;
+      text-transform: none;
+      background: #366EFF;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+  }
+}
+
