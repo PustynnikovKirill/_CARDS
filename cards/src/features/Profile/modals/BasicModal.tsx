@@ -2,12 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import {FC, ReactNode} from "react";
-import {Button} from "@mui/material";
 import {useAppSelector} from "../../../app/redax/store";
 // import style from "./BasicModal.module.scss"
 
 
 const style = {
+    display: 'flex',
+    justifyContent: 'center',
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -32,18 +33,15 @@ export const BasicModal:FC<PropsType> = ({children}) => {
     const handleClose = () => setOpen(false);
 
     return (
-        <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+        <div >
             <Modal
                 open={modal}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-
             >
                 <Box sx={style}>
                     {children}
-
                     {/*<Typography id="modal-modal-title" variant="h6" component="h2">*/}
                     {/*    Text in a modal*/}
                     {/*</Typography>*/}

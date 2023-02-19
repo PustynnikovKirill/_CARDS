@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6a3da56-4806-4a28-942b-f242abd08211" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/Profile/modals/DeleteModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Header/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Header/Pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/serchInputMyPack/searchInputMyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/serchInputMyPack/searchInputMyPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/RangeSlider/RangeSlider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +79,7 @@
       <updated>1675401638766</updated>
       <workItem from="1675401644733" duration="13321000" />
       <workItem from="1675680211371" duration="47239000" />
-      <workItem from="1676464829721" duration="24311000" />
+      <workItem from="1676464829721" duration="43472000" />
     </task>
     <servers />
   </component>

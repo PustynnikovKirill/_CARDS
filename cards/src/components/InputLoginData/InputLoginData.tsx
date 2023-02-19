@@ -12,7 +12,7 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 import style from './InputLoginData.module.scss'
 import {useFormik} from "formik";
 import {useAppDispatch} from "../../app/redax/store";
-import { LoginTC} from "../../app/redax/auth-reducer";
+import {LoginTC} from "../../app/redax/auth-reducer";
 import {PATH} from "../../features/Header/Pages";
 
 
@@ -31,22 +31,22 @@ export const InputLoginData = () => {
             password: '',
             rememberMe: false,
         },
-        validate: (values)=> {
-            const errors:FormikErrorType = {}
-            if(!values.email){
+        validate: (values) => {
+            const errors: FormikErrorType = {}
+            if (!values.email) {
                 errors.email = 'requred'
-            } else  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 errors.email = 'Invalid email address'
             }
-            if(!values.password){
+            if (!values.password) {
                 errors.password = 'requred'
-            } else if ( values.password.length < 6){
+            } else if (values.password.length < 6) {
                 errors.password = 'Invalid password'
             }
             return errors
         },
         onSubmit: values => {
-            dispatch(LoginTC(values.email,values.password,values.rememberMe))
+            dispatch(LoginTC(values.email, values.password, values.rememberMe))
             formik.resetForm()
         },
     });
@@ -69,7 +69,9 @@ export const InputLoginData = () => {
                         {...formik.getFieldProps('email')}
                     />
                 </FormControl>
-                {formik.errors.email && formik.touched.email && <div className={style.error}><div style={{color:'red'}}>{formik.errors.email}</div></div>}
+                {formik.errors.email && formik.touched.email && <div className={style.error}>
+                    <div style={{color: 'red'}}>{formik.errors.email}</div>
+                </div>}
                 <FormControl className={style.formControl}>
                     <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
                     <FilledInput
@@ -90,12 +92,19 @@ export const InputLoginData = () => {
                         }
                     />
                 </FormControl>
-                {formik.errors.password && formik.touched.password &&<div className={style.error}> <div style={{color:'red'}}>{formik.errors.password}</div></div>}
-                <div className={style.checkbox}><div><FormControlLabel control={<Checkbox  {...formik.getFieldProps('rememberMe')} defaultChecked checked={formik.values.rememberMe}/>} label="Remember me" /></div></div>
-                <div className={style.forgot}> <Link style = {{color: 'rgb(54, 110, 255)'}}  to={PATH.PASSWORD_RECOVERY}>Forgot
+                {formik.errors.password && formik.touched.password && <div className={style.error}>
+                    <div style={{color: 'red'}}>{formik.errors.password}</div>
+                </div>}
+                <div className={style.checkbox}>
+                    <div><FormControlLabel control={<Checkbox  {...formik.getFieldProps('rememberMe')} defaultChecked
+                                                               checked={formik.values.rememberMe}/>}
+                                           label="Remember me"/></div>
+                </div>
+                <div className={style.forgot}><Link style={{color: 'rgb(54, 110, 255)'}} to={PATH.PASSWORD_RECOVERY}>Forgot
                     Password</Link></div>
                 <Button className={style.button}
-                    type={'submit'} variant={'contained'}>
+                        type={'submit'}
+                        variant={'contained'}>
                     Sign In
                 </Button>
                 <h5 className={style.already}>Already have an account?</h5>
