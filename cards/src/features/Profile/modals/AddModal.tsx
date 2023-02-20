@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEventHandler, useState} from 'react';
 import {BasicModal} from "./BasicModal";
 import {Button, Checkbox, TextField} from "@mui/material";
 import style from "./AddModale.module.scss"
@@ -29,28 +29,29 @@ export const AddModal = () => {
         navigate ('/packsLists')
     }
     const changePrivateHandler = () => {
-        setPrivatePack(true)
+        setPrivatePack(!privatePack)
     }
 
-    const onKeyPressHandler = ()=> {
-        
-    }
 
     return (
         <BasicModal>
             <div className={style.addModal}>
                 <div className={style.header}>
                     <h3>Add new pack</h3>
-                    <CloseIcon onClick={closeModalHandler}/>
+                    <div className={style.closeButton}><CloseIcon onClick={closeModalHandler}/></div>
                 </div>
-                <div>
+                <div className={style.textField}>
                     <TextField id="standard-basic" label="Name pack" variant="standard"
                                value={valueModal}
                                onChange={onChangeModalHandler}
-                               onKeyPress={onKeyPressHandler}
+                               onKeyPress={(event)=>{
+                                   if(event.key==='Enter'){
+                                       saveTitleHandler()
+                                   }
+                               }}
                     />
                 </div>
-                <div>
+                <div className={style.checkbox}>
                     <Checkbox
                         checked={privatePack}
                         onChange={changePrivateHandler}

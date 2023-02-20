@@ -6,10 +6,29 @@
   .header{
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-left: 60px;
+    .closeButton{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .textField{
+    width: 100%;
+    margin-left: 35px;
+  }
+  .checkbox{
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
   }
   .genericButton{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
     .button {
       border-radius: 18px;
       margin-top:20px;

@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f6a3da56-4806-4a28-942b-f242abd08211" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputLoginData/InputLoginData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +78,7 @@
       <workItem from="1675401644733" duration="13321000" />
       <workItem from="1675680211371" duration="47239000" />
       <workItem from="1676464829721" duration="43472000" />
+      <workItem from="1676829427757" duration="7653000" />
     </task>
     <servers />
   </component>
