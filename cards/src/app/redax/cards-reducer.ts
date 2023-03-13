@@ -24,7 +24,8 @@ const initialState = {
     packUserId: '',
     currentCardsPack_id: '',
     flagCard: false,
-    searchValueCard:''
+    searchValueCard: '',
+    cardModal: false
 }
 
 export type CardsActionsType =
@@ -34,6 +35,7 @@ export type CardsActionsType =
     | currentCardsPackACTypeType
     | cardChangeMyOrFriendType
     | setSearchType
+    | modalCardsType
 
 export const cardsReducer = (state: InitialStateType = initialState, action: CardsActionsType): InitialStateType => {
     switch (action.type) {
@@ -54,6 +56,9 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Car
         }
         case 'CARDS/CARD_SET_SEARCH': {
             return {...state, searchValueCard: action.searchValueCard}
+        }
+        case 'CARDS/CARD_MODAL': {
+            return {...state, cardModal: action.cardModal}
         }
         default:
             return state;
@@ -85,9 +90,15 @@ export const cardChangeMyOrFriend = (flagCard: boolean) => ({
 } as const)
 
 type setSearchType = ReturnType<typeof setSearchCards>
-export const setSearchCards = (searchValueCard:string) => ({
+export const setSearchCards = (searchValueCard: string) => ({
     type: 'CARDS/CARD_SET_SEARCH',
     searchValueCard
+} as const)
+
+type modalCardsType = ReturnType<typeof modalCards>
+export const modalCards = (cardModal: boolean) => ({
+    type: 'CARDS/CARD_MODAL',
+    cardModal
 } as const)
 
 export const getCardsTC = (data: getCardsParamsType) => (dispatch: AppDispatch,) => {
@@ -153,5 +164,6 @@ type InitialStateType = {
     packUserId: string,
     currentCardsPack_id: string,
     flagCard: boolean,
-    searchValueCard:string
+    searchValueCard: string
+    cardModal:boolean
 }

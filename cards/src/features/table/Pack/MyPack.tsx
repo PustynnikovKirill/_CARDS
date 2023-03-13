@@ -8,7 +8,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {useSelector} from "react-redux";
 import {AppRootStateType, useAppDispatch, useAppSelector} from "../../../app/redax/store";
 import {Navigate, useNavigate} from "react-router-dom";
-import {createCardsTC, getCardsTC, setSearchCards} from "../../../app/redax/cards-reducer";
+import {createCardsTC, getCardsTC, modalCards, setSearchCards} from "../../../app/redax/cards-reducer";
 import {useEffect} from "react";
 
 
@@ -30,7 +30,9 @@ export const MyPacks = () => {
     }
 
     const addNewCardHandler = () => {
-        dispatch(createCardsTC({cardsPack_id}))
+        // dispatch(createCardsTC({cardsPack_id}))
+        dispatch(modalCards(true))
+
     }
     const backToPacksListHandler = () => {
         navigate('/packsLists')

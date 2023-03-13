@@ -23,7 +23,9 @@ export type InitialStateType = {
     valueSearch?: string,
     myPacksId?: string,
     rangeSlider?: number[],
-    modal:boolean
+    modal: boolean,
+    currentNameId: {packId:string, currentName:string}
+    changeModal: boolean
 }
 
 const initialState = {
@@ -46,7 +48,9 @@ const initialState = {
     valueSearch: '',
     myPacksId: '',
     rangeSlider: [0, 100],
-    modal:false
+    modal: false,
+    currentNameId: {packId:'',currentName:''},
+    changeModal: false
 }
 
 export type PacksActionsType = setPacksACType
@@ -58,6 +62,8 @@ export type PacksActionsType = setPacksACType
     | packRangeACType
     | resetFiltersACType
     | addModalACType
+    | currentNameACType
+    | ChangeModalACType
 
 export const packsReducer = (state: InitialStateType = initialState, action: PacksActionsType): InitialStateType => {
     switch (action.type) {
@@ -86,7 +92,13 @@ export const packsReducer = (state: InitialStateType = initialState, action: Pac
             return {...state, valueSearch: '', myPacksId: '', rangeSlider: []}
         }
         case 'PACK/ADD_MODAL': {
-            return {...state, modal:action.modal}
+            return {...state, modal: action.modal}
+        }
+        case 'PACK/CURRENT_NAME': {
+            return {...state,  currentNameId: {...action.payload}}
+        }
+        case 'PACK/CHANGE_MODAL': {
+            return {...state, changeModal: action.changeModal}
         }
         default:
             return state;
@@ -123,9 +135,18 @@ type resetFiltersACType = ReturnType<typeof resetFiltersAC>
 export const resetFiltersAC = () => {
     return {type: 'PACK/RESET_FILTERS'} as const
 }
+
 type addModalACType = ReturnType<typeof addModalAC>
-export const addModalAC = (modal:boolean) => {
+export const addModalAC = (modal: boolean) => {
     return {type: 'PACK/ADD_MODAL', modal} as const
+}
+type currentNameACType = ReturnType<typeof currentNameAC>
+export const currentNameAC = (packId:string,currentName: string) => {
+    return {type: 'PACK/CURRENT_NAME', payload:{packId,currentName}}  as const
+}
+type ChangeModalACType = ReturnType<typeof ChangeModalAC>
+export const ChangeModalAC = (changeModal: boolean) => {
+    return {type: 'PACK/CHANGE_MODAL', changeModal} as const
 }
 
 export const getPacksTC = (currentPage?: number | undefined, pageCount?: number | undefined): AppThunk =>

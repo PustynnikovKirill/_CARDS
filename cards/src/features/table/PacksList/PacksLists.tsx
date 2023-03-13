@@ -6,7 +6,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import {SearchInput} from "./serchInput/searchInput";
 import {useAppDispatch, useAppSelector} from "../../../app/redax/store";
 import {
-    addModalAC,
+    addModalAC, ChangeModalAC,
     createPackTC,
     getPacksTC,
     resetFiltersAC,
@@ -16,6 +16,7 @@ import {
 import {PackTable} from "./StickyHeadTable/PackTable";
 import {useEffect} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import {AddModal} from "../../Profile/modals/AddModal";
 
 
 export const PacksList = () => {
@@ -49,8 +50,9 @@ export const PacksList = () => {
     }, [valueSearch, myPacksId, rangeSlider, minCardsCount, maxCardsCount])
 
     const addNewPackHandler = () => {
-        navigate('/addModal')
+        // navigate('/addModal')
         dispatch(addModalAC(true))
+        dispatch(ChangeModalAC(false))
         // dispatch(createPackTC({name: 'newName', deckCover: '', private: false}))
 
     }

@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6a3da56-4806-4a28-942b-f242abd08211" name="Changes" comment="">
+    <list default="true" id="4432c5c7-9206-444e-b401-777dbdeeda44" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
-        <option value="CSS File" />
-        <option value="SCSS File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -27,7 +26,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LDNLVvjT2GZHdDnmF20gdfpJKh" />
+  <component name="ProjectId" id="2MxPTI2cxdvSGNPJJF9yZHnzrZy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,48 +36,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/features/Profile/modals" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="E:\NEWCARDS\_CARDS\cards\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\NEWCARDS\_CARDS\cards\src\features\Profile\modals" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="deploy" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.deploy" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f6a3da56-4806-4a28-942b-f242abd08211" name="Changes" comment="" />
-      <created>1675401638766</created>
+      <changelist id="4432c5c7-9206-444e-b401-777dbdeeda44" name="Changes" comment="" />
+      <created>1678706267215</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1675401638766</updated>
-      <workItem from="1675401644733" duration="13321000" />
-      <workItem from="1675680211371" duration="47239000" />
-      <workItem from="1676464829721" duration="43472000" />
-      <workItem from="1676829427757" duration="7653000" />
+      <updated>1678706267215</updated>
+      <workItem from="1678706268906" duration="8583000" />
     </task>
     <servers />
   </component>

@@ -21,6 +21,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 
+
 interface Column {
     // id: 'name' | 'code' | 'population' | 'size' | 'density';
     id: 'question' | 'answer' | 'lastUpdated' | 'crade' | 'actions';
@@ -82,6 +83,7 @@ export const MyCardsTable = () => {
     const packUserId = useSelector<AppRootStateType, string>(state => state.cards.packUserId)
     const cardsTotalCount = useSelector<AppRootStateType, number>(state => state.cards.cardsTotalCount)
     const cardsPack_id = useSelector<AppRootStateType, string>(state => state.cards.currentCardsPack_id)
+    const cardModal = useSelector<AppRootStateType, boolean>(state => state.cards.cardModal)
 
     const handleChangePage = (event: unknown, newPage: number) => {
         newPage = newPage + 1
@@ -118,6 +120,12 @@ export const MyCardsTable = () => {
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
+                            {/*{*/}
+                            {/*    cardModal*/}
+                            {/*        ? <AddModalMyPack/>*/}
+                            {/*        :*/}
+                            {/*}*/}
+
                             {columns.map((column) => (
                                 <TableCell
                                     key={column.id}
@@ -130,27 +138,28 @@ export const MyCardsTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {cards
-                            .map((cards) => {
-                                return (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={cards._id}>
-                                        <TableCell onClick={()=>updateChangeHandler(cards._id,cards.cardsPack_id)}>
-                                            {cards.question}
-                                        </TableCell>
-                                        <TableCell>
-                                            {cards.answer}
-                                        </TableCell>
-                                        <TableCell align={'right'}>
-                                            {changeFormat(cards.updated)}
-                                        </TableCell>
-                                        <TableCell align={'right'}>
-                                            <HalfRating/>
-                                        </TableCell>
-                                        <TableCell align={'right'}>
-                                            <BorderColorIcon/><DeleteIcon onClick={()=>deleteCardHandler(cards._id,cards.cardsPack_id)}/>
-                                        </TableCell>
-                                    </TableRow>
-                                );
+                        {
+                                cards
+                                    .map((cards) => {
+                                        return (
+                                            <TableRow hover role="checkbox" tabIndex={-1} key={cards._id}>
+                                                <TableCell onClick={()=>updateChangeHandler(cards._id,cards.cardsPack_id)}>
+                                                    {cards.question}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {cards.answer}
+                                                </TableCell>
+                                                <TableCell align={'right'}>
+                                                    {changeFormat(cards.updated)}
+                                                </TableCell>
+                                                <TableCell align={'right'}>
+                                                    <HalfRating/>
+                                                </TableCell>
+                                                <TableCell align={'right'}>
+                                                    <BorderColorIcon/><DeleteIcon onClick={()=>deleteCardHandler(cards._id,cards.cardsPack_id)}/>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
                             })}
                     </TableBody>
                 </Table>

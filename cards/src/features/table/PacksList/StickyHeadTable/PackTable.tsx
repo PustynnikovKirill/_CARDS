@@ -13,16 +13,18 @@ import SchoolIcon from '@mui/icons-material/School';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
-    createCurrentPageAC,
+    addModalAC, ChangeModalAC,
+    createCurrentPageAC, currentNameAC,
     deletePackTC,
     getPacksTC,
     rowsPageAC,
-    updatePackTC
 } from "../../../../app/redax/packs-reducer";
 import {cardChangeMyOrFriend, getCardsTC} from "../../../../app/redax/cards-reducer";
 import {useNavigate} from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 import {IconButton} from "@mui/material";
+import {AddModal} from "../../../Profile/modals/AddModal";
+
 
 interface Column {
     id: 'name' | 'cards' | 'LastUpdated' | 'createdBy' | 'actions';
@@ -67,6 +69,8 @@ export const PackTable: React.FC = (props) => {
     const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.packs.cardPacksTotalCount)
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
     const userId = useSelector<AppRootStateType>((state) => state.auth.data._id)
+    const modal = useSelector<AppRootStateType,boolean>((state) => state.packs.modal)
+
 
 
     const handleChangePage = (event: unknown, newPage: number) => {
@@ -94,7 +98,7 @@ export const PackTable: React.FC = (props) => {
         } else {
             dispatch(cardChangeMyOrFriend(false))
         }
-        dispatch(getCardsTC({cardsPack_id: idPack}))
+        // dispatch(getCardsTC({cardsPack_id: idPack}))
         navigate('/myPackTable')
     }
 
@@ -103,6 +107,7 @@ export const PackTable: React.FC = (props) => {
             dispatch(getPacksTC(page, pageCount))
         }
     }, [])
+
 
     return (
         <>
@@ -124,47 +129,50 @@ export const PackTable: React.FC = (props) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {cardPacks?.map((card) => {
-                                    const updatePackHandler = () => {
-                                        dispatch(updatePackTC({_id: card._id, name: 'UpdatePack'}))
-                                    }
-                                    return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
-                                        <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
-                                            {card.name}
-                                        </TableCell>
-                                        <TableCell align={'left'}>
-                                            {card.cardsCount}
-                                        </TableCell>
-                                        <TableCell align={'right'}>
-                                            {createData(card.updated)}
-                                        </TableCell>
-                                        <TableCell align={'center'}>
-                                            {card.user_name}
-                                        </TableCell>
-                                        <TableCell align={'right'}>
-                                            {
-                                                card.user_id === userId
-                                                    ? <><IconButton disabled = {card.cardsCount === 0}>
-                                                        <SchoolIcon/>
-                                                    </IconButton>
-                                                        <IconButton disabled = {card.cardsCount === 0}>
-                                                            <BorderColorIcon onClick={updatePackHandler}/>
-                                                        </IconButton>
-                                                        <IconButton disabled = {card.cardsCount === 0}>
-                                                            <DeleteIcon
-                                                                onClick={() => deletePackHandler(card._id)}/>
-                                                        </IconButton>
-                                                       </>
-                                                    :
-                                                    <IconButton disabled = {card.cardsCount === 0}>
-                                                        <SchoolIcon
-                                                        />
-                                                    </IconButton>
+                                {
+                                    cardPacks?.map((card) => {
+                                        const updatePackHandler = (packId:string,name:string) => {
+                                            dispatch(addModalAC(true))
+                                            dispatch(currentNameAC(packId,name))
+                                            dispatch(ChangeModalAC(true))
+                                        }
 
-                                            }
-                                        </TableCell>
-                                    </TableRow>
-                                })}
+                                        return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
+                                            <TableCell onClick={() => onClickToCardsHandler(card._id, card.user_id)}>
+                                                {card.name}
+                                            </TableCell>
+                                            <TableCell align={'left'}>
+                                                {card.cardsCount}
+                                            </TableCell>
+                                            <TableCell align={'right'}>
+                                                {createData(card.updated)}
+                                            </TableCell>
+                                            <TableCell align={'center'}>
+                                                {card.user_name}
+                                            </TableCell>
+                                            <TableCell align={'right'}>
+                                                {
+                                                    card.user_id === userId
+                                                        ? <><IconButton disabled = {card.cardsCount === 0}>
+                                                            <SchoolIcon/>
+                                                        </IconButton>
+                                                            <IconButton >
+                                                                <BorderColorIcon onClick={()=>updatePackHandler(card._id,card.name)}/>
+                                                            </IconButton>
+                                                            <IconButton >
+                                                                <DeleteIcon
+                                                                    onClick={() => deletePackHandler(card._id)}/>
+                                                            </IconButton>
+                                                        </>
+                                                        :
+                                                        <IconButton disabled = {card.cardsCount === 0}>
+                                                            <SchoolIcon
+                                                            />
+                                                        </IconButton>
+                                                }
+                                            </TableCell>
+                                        </TableRow>
+                                    })}
                             </TableBody>
                         </Table>
                     </TableContainer>

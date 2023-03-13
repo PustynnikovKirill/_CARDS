@@ -33,9 +33,9 @@ export const BasicModal:FC<PropsType> = ({children}) => {
     const handleClose = () => setOpen(false);
 
     return (
-        <div >
+        <div>
             <Modal
-                open={modal}
+                open={true}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"

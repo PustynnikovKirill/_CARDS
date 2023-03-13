@@ -1,51 +1,60 @@
-import React, {ChangeEvent, KeyboardEventHandler, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {BasicModal} from "./BasicModal";
 import {Button, Checkbox, TextField} from "@mui/material";
 import style from "./AddModale.module.scss"
 import CloseIcon from '@mui/icons-material/Close';
-import {useAppDispatch} from "../../../app/redax/store";
-import {addModalAC, createPackTC} from "../../../app/redax/packs-reducer";
-import {useNavigate} from "react-router-dom";
+import {AppRootStateType, useAppDispatch} from "../../../app/redax/store";
+import {addModalAC, createPackTC, updatePackTC} from "../../../app/redax/packs-reducer";
+import {useSelector} from "react-redux";
+
 
 export const AddModal = () => {
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
+    const currentName = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.currentName)
+    const changeModal = useSelector<AppRootStateType, boolean>(state => state.packs.changeModal)
+    const currentPackId = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.packId)
 
-    let [valueModal, setValueModal] = useState('')
+
+    let [valueModal, setValueModal] = useState(currentName)
     let [privatePack, setPrivatePack] = useState(false)
 
     const buttonHandler = () => {
         dispatch(addModalAC(false))
     }
-
     const closeModalHandler = () => {
         dispatch(addModalAC(false))
     }
     const onChangeModalHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setValueModal(event.currentTarget.value)
     }
-    const saveTitleHandler =()=> {
-        dispatch(createPackTC({name:valueModal,private: privatePack}))
-        navigate ('/packsLists')
+    const saveTitleHandler = () => {
+        if (changeModal) {
+            dispatch(updatePackTC({_id: currentPackId, name: valueModal}))
+        } else {
+            dispatch(createPackTC({name: valueModal, private: privatePack}))
+        }
+
+        dispatch(addModalAC(false))
+
+        // navigate ('/packsLists')
     }
     const changePrivateHandler = () => {
         setPrivatePack(!privatePack)
     }
 
-
     return (
         <BasicModal>
             <div className={style.addModal}>
                 <div className={style.header}>
-                    <h3>Add new pack</h3>
+                    {changeModal ? <h3>Change pack</h3> : <h3>Add new pack</h3>}
                     <div className={style.closeButton}><CloseIcon onClick={closeModalHandler}/></div>
                 </div>
                 <div className={style.textField}>
                     <TextField id="standard-basic" label="Name pack" variant="standard"
                                value={valueModal}
                                onChange={onChangeModalHandler}
-                               onKeyPress={(event)=>{
-                                   if(event.key==='Enter'){
+                               onKeyPress={(event) => {
+                                   if (event.key === 'Enter') {
                                        saveTitleHandler()
                                    }
                                }}
@@ -74,10 +83,6 @@ export const AddModal = () => {
                 </div>
             </div>
         </BasicModal>
-        // <BasicModal>
-        //         <h1>AddModal title</h1>
-        //         <button>add modal</button>
-        // </BasicModal>
     );
 };
 
