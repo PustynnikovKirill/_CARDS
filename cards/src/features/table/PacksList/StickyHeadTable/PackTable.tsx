@@ -13,11 +13,11 @@ import SchoolIcon from '@mui/icons-material/School';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
-    addModalAC, ChangeModalAC,
+    addModalAC,
     createCurrentPageAC, currentNameAC,
     deletePackTC,
     getPacksTC,
-    rowsPageAC,
+    rowsPageAC, statusModalAC,
 } from "../../../../app/redax/packs-reducer";
 import {cardChangeMyOrFriend, getCardsTC} from "../../../../app/redax/cards-reducer";
 import {useNavigate} from "react-router-dom";
@@ -69,8 +69,7 @@ export const PackTable: React.FC = (props) => {
     const cardPacksTotalCount = useSelector<AppRootStateType, number>(state => state.packs.cardPacksTotalCount)
     const isLogin = useSelector<AppRootStateType>((state) => state.auth.isLogin)
     const userId = useSelector<AppRootStateType>((state) => state.auth.data._id)
-    const modal = useSelector<AppRootStateType,boolean>((state) => state.packs.modal)
-
+    const modal = useSelector<AppRootStateType, boolean>((state) => state.packs.modal)
 
 
     const handleChangePage = (event: unknown, newPage: number) => {
@@ -89,7 +88,9 @@ export const PackTable: React.FC = (props) => {
     }
 
     const deletePackHandler = (_id: string) => {
-        dispatch(deletePackTC(_id))
+        dispatch(addModalAC(true))
+        dispatch(statusModalAC('deleteModal'))
+        // dispatch(deletePackTC(_id))
     }
 
     const onClickToCardsHandler = (idPack: string, user_id: string | undefined) => {
@@ -131,10 +132,10 @@ export const PackTable: React.FC = (props) => {
                             <TableBody>
                                 {
                                     cardPacks?.map((card) => {
-                                        const updatePackHandler = (packId:string,name:string) => {
+                                        const updatePackHandler = (packId: string, name: string) => {
                                             dispatch(addModalAC(true))
-                                            dispatch(currentNameAC(packId,name))
-                                            dispatch(ChangeModalAC(true))
+                                            dispatch(currentNameAC(packId, name))
+                                            dispatch(statusModalAC('changeModal'))
                                         }
 
                                         return <TableRow hover role="checkbox" tabIndex={-1} key={card._id}>
@@ -153,19 +154,20 @@ export const PackTable: React.FC = (props) => {
                                             <TableCell align={'right'}>
                                                 {
                                                     card.user_id === userId
-                                                        ? <><IconButton disabled = {card.cardsCount === 0}>
+                                                        ? <><IconButton disabled={card.cardsCount === 0}>
                                                             <SchoolIcon/>
                                                         </IconButton>
-                                                            <IconButton >
-                                                                <BorderColorIcon onClick={()=>updatePackHandler(card._id,card.name)}/>
+                                                            <IconButton>
+                                                                <BorderColorIcon
+                                                                    onClick={() => updatePackHandler(card._id, card.name)}/>
                                                             </IconButton>
-                                                            <IconButton >
+                                                            <IconButton>
                                                                 <DeleteIcon
                                                                     onClick={() => deletePackHandler(card._id)}/>
                                                             </IconButton>
                                                         </>
                                                         :
-                                                        <IconButton disabled = {card.cardsCount === 0}>
+                                                        <IconButton disabled={card.cardsCount === 0}>
                                                             <SchoolIcon
                                                             />
                                                         </IconButton>

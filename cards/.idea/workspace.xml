@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4432c5c7-9206-444e-b401-777dbdeeda44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/cards-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPackTable/MyCardsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/DeleteModal.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
     </list>
@@ -50,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678706267215</updated>
-      <workItem from="1678706268906" duration="8583000" />
+      <workItem from="1678706268906" duration="29876000" />
     </task>
     <servers />
   </component>

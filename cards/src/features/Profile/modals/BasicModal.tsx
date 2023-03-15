@@ -26,7 +26,7 @@ type PropsType = {
 }
 
 export const BasicModal:FC<PropsType> = ({children}) => {
-    const modal = useAppSelector(state => state.packs.modal)
+
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
