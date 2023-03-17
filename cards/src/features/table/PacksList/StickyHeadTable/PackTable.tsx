@@ -14,7 +14,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
     addModalAC,
-    createCurrentPageAC, currentNameAC,
+    createCurrentPageAC, currentNameAC, deleteModalAC,
     deletePackTC,
     getPacksTC,
     rowsPageAC, statusModalAC,
@@ -90,7 +90,7 @@ export const PackTable: React.FC = (props) => {
     const deletePackHandler = (_id: string) => {
         dispatch(addModalAC(true))
         dispatch(statusModalAC('deleteModal'))
-        // dispatch(deletePackTC(_id))
+        dispatch(deleteModalAC(_id))
     }
 
     const onClickToCardsHandler = (idPack: string, user_id: string | undefined) => {

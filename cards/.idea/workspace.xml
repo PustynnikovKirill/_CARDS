@@ -5,10 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/redax/packs-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/AddModale.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Profile/modals/BasicModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Profile/modals/DeleteModal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/PacksLists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/Pack/MyPack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/table/PacksList/StickyHeadTable/PackTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +43,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678706267215</updated>
-      <workItem from="1678706268906" duration="29876000" />
+      <workItem from="1678706268906" duration="30990000" />
+      <workItem from="1678959242722" duration="8324000" />
     </task>
     <servers />
   </component>

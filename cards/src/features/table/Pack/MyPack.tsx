@@ -30,7 +30,7 @@ export const MyPacks = () => {
     }
 
     const addNewCardHandler = () => {
-        // dispatch(createCardsTC({cardsPack_id}))
+        dispatch(createCardsTC({cardsPack_id}))
         dispatch(modalCards(true))
 
     }

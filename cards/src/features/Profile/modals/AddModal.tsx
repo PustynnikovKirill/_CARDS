@@ -4,7 +4,7 @@ import {Button, Checkbox, TextField} from "@mui/material";
 import style from "./AddModale.module.scss"
 import CloseIcon from '@mui/icons-material/Close';
 import {AppRootStateType, useAppDispatch} from "../../../app/redax/store";
-import {addModalAC, createPackTC, updatePackTC, ValueModalType} from "../../../app/redax/packs-reducer";
+import {addModalAC, createPackTC, deletePackTC, updatePackTC, ValueModalType} from "../../../app/redax/packs-reducer";
 import {useSelector} from "react-redux";
 
 const headers = {
@@ -28,6 +28,7 @@ export const AddPack = () => {
     const currentName = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.currentName)
     const statusModal = useSelector<AppRootStateType, ValueModalType>(state => state.packs.statusModal)
     const currentPackId = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.packId)
+
 
 
     let [valueModal, setValueModal] = useState(currentName)
@@ -105,6 +106,7 @@ const DeleteModal = () => {
     const currentName = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.currentName)
     const statusModal = useSelector<AppRootStateType, ValueModalType>(state => state.packs.statusModal)
     const currentPackId = useSelector<AppRootStateType, string>(state => state.packs.currentNameId.packId)
+    const deleteId = useSelector<AppRootStateType, string>(state => state.packs.deleteId)
 
 
     let [valueModal, setValueModal] = useState(currentName)
@@ -120,11 +122,7 @@ const DeleteModal = () => {
         setValueModal(event.currentTarget.value)
     }
     const saveTitleHandler = () => {
-        if (statusModal === 'changeModal') {
-            dispatch(updatePackTC({_id: currentPackId, name: valueModal}))
-        } else if (statusModal === 'addModal') {
-            dispatch(createPackTC({name: valueModal, private: privatePack}))
-        }
+       dispatch(deletePackTC(deleteId))
 
         dispatch(addModalAC(false))
 
