@@ -21,6 +21,7 @@ export const MyPacks = () => {
     const flagCard = useSelector<AppRootStateType, boolean>(state => state.cards.flagCard)
     const searchValueCard = useAppSelector(state=>state.cards.searchValueCard)
 
+
     useEffect(() => {
         getCardsTC({cardsPack_id})
     }, [searchValueCard])
